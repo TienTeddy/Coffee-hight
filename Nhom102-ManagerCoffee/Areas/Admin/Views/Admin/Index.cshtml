@@ -1,0 +1,162 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="~/Areas/Admin/assets/css/pop.css" rel="stylesheet" />
+<link href="~/Content/spinner.css" rel="stylesheet" />
+
+<div class="container-fluid">
+    <!----Spinner
+    <div class="center-parent" id="spinner-action">
+        <div class="center-me">
+            <div class="loader"></div>
+        </div>
+    </div>-->
+    <img class="spinner_img" src="~/Images/spinner_success.gif" id="spinner-action" />
+
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="profile-1">
+                <img class="profile-2 btn" src="~/Areas/Admin/assets/img/avt-nam.jpg" />
+            </div>&nbsp;
+            <div style="margin-top:70px;">
+                <h4>Name: Le Van Tien</h4>
+                <h5>#Slogan: $1000 USD</h5>
+            </div>
+        </div>
+        <div class="col-sm-7" style="margin-top:4%">
+            <div class="title btn" style="background-color:indianred" data-toggle="modal" data-target="#exampleModal">KHO</div>
+            <div class="title btn" style="background-color:lightseagreen">LỊCH SỬ</div>
+            <div class="title btn" style="background-color:goldenrod">TABLE</div>
+
+        </div>
+    </div>
+
+    <div class="row" style="margin-top:5%">
+        <div class="col-md-5 content-1">
+            <!--show LoaiSanPham-->
+            <div class="row" id="LoaiSanPham"></div>
+            <i onclick="optionShow_()" class="material-icons">&#xe1e2;</i>
+            <!--/show LoaiSanPham-->
+
+            <table class="table table-hover table_sanpham">
+                <tr>
+                    <td><strong>TÊN MÓN</strong></td>
+                    <td><strong>SỐ LƯỢNG</strong></td>
+                    <td><strong>GIÁ</strong></td>
+                </tr>
+                <tbody id="sanpham"></tbody> <!--class=loai, id=sanpham-->
+            </table>
+
+            <!--table_left_hide-->
+            <div style="display:inline-block;width:100%;" class="table_left_">
+                <label id="idsanpham_left_table"></label>
+                <label class="label-success">Tên món:</label><p id="tensanpham_left_table">Coffee 1</p>
+                <label class="label-success">Loại: </label><p id="tenloai_left_table">Coffee 1</p>
+                <label class="label-success">Đơn giá: </label><p id="gia_left_table">Coffee 1</p><br />
+                <label class="label-success">Số lượng:</label>
+                <input class="form-control-sm" id="soluong_left_table" type="number" max="100" min="0" />
+                <div style="margin-top:3%" id="table_show_2">
+                    <div class="table_left btn option_table_left">1</div>
+                    <div class="table_left btn option_table_left">1</div>
+                    <div class="table_left btn option_table_left">1</div>
+                    <div class="table_left btn option_table_left">1</div>
+                    <div class="table_left btn option_table_left"><i style="font-size:40px;margin-top:30%" class="fa">&#xf196;</i></div>
+                </div>
+                <div class="btn btn-default cancel" id="cancel_table_left">cancel</div>
+                <div class="btn btn-info" id="submit_table_left" style="float:right;margin-top:4%">Submit</div>
+            </div>
+
+        </div>
+        <div class="col-md-7 content-2" id="table_show_1">
+            <div class="table_ btn" id="table-1" data-toggle="modal" data-target="#largeModal">1</div>
+            <div class="table_ btn" id="table-2" data-toggle="modal" data-target="#largeModal">2</div>
+            <div class="table_ btn" id="table-3" data-toggle="modal" data-target="#largeModal">3</div>
+            <div class="table_ btn" id="table-4" data-toggle="modal" data-target="#largeModal">4</div>
+            <div class="table_ btn" id="table-5" data-toggle="modal" data-target="#largeModal">5</div>
+            <div class="table_ btn" id="table-6" data-toggle="modal" data-target="#largeModal">6</div>
+            <div class="table_ btn" id="table-7" data-toggle="modal" data-target="#largeModal">7</div>
+            <div class="table_ btn" id="table-8" data-toggle="modal" data-target="#largeModal">8</div>
+            <div class="table_ btn" id="table-9" data-toggle="modal" data-target="#largeModal">9</div>
+            <div class="table_ btn" id="table-10" data-toggle="modal" data-target="#largeModal">10</div>
+            <div class="table_ btn" id="table-11" data-toggle="modal" data-target="#largeModal">11</div>
+            <div class="table_ btn" id="table-12" data-toggle="modal" data-target="#largeModal">12</div>
+            <div class="table_ btn" id="table-13" data-toggle="modal" data-target="#largeModal">13</div>
+            <div class="table_ btn" id="table-14" data-toggle="modal" data-target="#largeModal">14</div>
+            <div class="table_ btn" id="table-15" data-toggle="modal" data-target="#largeModal">15</div>
+            <div class="table_ btn" id="table-16" data-toggle="modal" data-target="#largeModal">16</div>
+            <div class="table_ btn" id="table-17" data-toggle="modal" data-target="#largeModal">17</div>
+            <div class="table_ btn" id="table-18" data-toggle="modal" data-target="#largeModal">18</div>
+            <div class="table_ btn" id="table-19" data-toggle="modal" data-target="#largeModal">19</div>
+            <div class="table_ btn" id="table-push"><i style="font-size:60px;margin-top:30%" class="fa">&#xf196;</i></div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Large Modal</h4>
+            </div>
+            <div class="modal-body" id="tableshow">
+                <h3>Modal Body</h3>
+                <div class="table_main ">
+                    <div class="img_item">
+                        <img src="~/Images/no-image-found.png" class="img_item_" />
+                    </div>
+                    <div class="infor_table">
+                        <h3 style="margin-top:2%"><strong>Coffee 1</strong></h3>
+                        <h5>Coffee</h5>
+                        <div class="btn btn-warning infor_table_sl">SL:</div>
+                        <div class="btn btn-success infor_table_dg">Đơn Giá:</div>
+                    </div>
+                </div>
+                <div class="table_main ">
+                    <div class="img_item">
+                        <img src="~/Images/no-image-found.png" class="img_item_" />
+                    </div>
+                    <div class="infor_table">
+                        <h3 style="margin-top:2%"><strong>Coffee 1</strong></h3>
+                        <h5>Coffee</h5>
+                        <div class="btn btn-warning infor_table_sl">SL:</div>
+                        <div class="btn btn-success infor_table_dg">Đơn Giá:</div>
+                    </div>
+                </div>
+                <div class="table_main ">
+                    <div class="img_item">
+                        <img src="~/Images/no-image-found.png" class="img_item_" />
+                    </div>
+                    <div class="infor_table">
+                        <h3 style="margin-top:2%"><strong>Coffee 1</strong></h3>
+                        <h5>Coffee</h5>
+                        <div class="btn btn-warning infor_table_sl">SL:</div>
+                        <div class="btn btn-success infor_table_dg">Đơn Giá:</div>
+                    </div>
+                </div>
+                <div class="table_main ">
+                    <div class="img_item">
+                        <img src="~/Images/no-image-found.png" class="img_item_" />
+                    </div>
+                    <div class="infor_table">
+                        <h3 style="margin-top:2%"><strong>Coffee 1</strong></h3>
+                        <h5>Coffee</h5>
+                        <div class="btn btn-warning infor_table_sl">SL:</div>
+                        <div class="btn btn-success infor_table_dg">Đơn Giá:</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+

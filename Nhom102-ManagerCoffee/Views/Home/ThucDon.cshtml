@@ -1,0 +1,162 @@
+﻿@model List<Mode.SanPham>
+@{
+    ViewBag.Title = "ThucDon";
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="~/Content/modal-shipping.css" rel="stylesheet" />
+
+<div class="inner-banner"></div>
+<section class="w3l-breadcrumb">
+    <div class="container">
+        <ul class="breadcrumbs-custom-path">
+            <li><a href="#url">Trang Chủ</a></li>
+            <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span>@ViewBag.Message</li>
+        </ul>
+    </div>
+</section>
+<!--shopping card-->
+<a id="shopping-icon" onclick="order()" class="btn-shopping flex-top" data-toggle="modal" data-target="#largeModal" style="position: fixed;left:90%;right:8%;top:12%;transform: translate(100%, 100%);">
+    <!--<img src="~/images/shopping-icon.svg" style="width:70px;height:70px;border-radius:40%" />-->
+        <img src="~/images/shopping-icon2.gif" style="width:70px;height:70px;border-radius:50%;" />
+</a>
+
+<div class="w3l-menublock py-5">
+    <!-- menu block -->
+    <div id="w3l-menublock" class="text-center py-lg-4 py-md-3">
+        <div class="container">
+            <div class="title-content mb-5">
+                <h3 class="title-big text-center mb-5">Thực đơn của chúng tôi</h3>
+            </div>
+            <div id="loaisanpham_show">
+                <button class="btn-cate">Coffee</button>
+            </div>
+
+            <section>
+                <h3 class="title-small text-center">Coffee - <span>We make the delicious coffee</span></h3>
+                <div class="row menu-body" id="menu-body">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-lg-6 menu-section pr-lg-5">
+                            <!-- Item starts -->
+                            <div class="menu-item">
+                                <img src="~/images/middle.png" alt="" class="radius-image img-fluid" />
+                                <div>
+                                    <div class="row border-dot no-gutters">
+                                        <div class="col-8 menu-item-name">
+                                            <h6>@item.tensanpham</h6> <!--tensanpham-->
+                                        </div>
+                                        <div class="col-4 menu-item-price text-right">
+                                            <h6>@item.gia &nbsp;VNĐ</h6> <!--gia-->
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-10 menu-item-description">
+                                            <p>@item.mota</p> <!--mota-->
+                                        </div>
+                                        <div class="col-2" style="text-align:right">
+                                            <form id="form_value" action="#" method="post">
+                                                <input type="hidden" class="id_sanpham" value="@item.id_sanpham">
+                                                <input type="hidden" class="id_loai" value="@item.id_loai">
+                                                <input type="hidden" name="tensanpham" value="@item.tensanpham">
+                                                <input type="hidden" name="gia" value="@item.gia">
+                                                <input type="hidden" name="mota" value="@item.mota">
+                                            </form>
+                                            <button id="submit-sanpham" onclick="getvalue_cart('@item.id_sanpham','@item.id_loai','@item.tensanpham','@item.gia')" class="btn btn-primary btn-lg mt-1">
+                                                <span class="fa fa-plus" aria-hidden="true"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<hr style="margin-top:5%" />
+
+<div id="icon_tick_success" class="btn-shopping flex-top" style="position: fixed;left:-1%;right:98%;top:21%;transform: translate(100%, 100%);">
+    <img src="~/images/icon-tick-success.gif" style="width:210px;height:210px" />
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">l</h4>
+            </div>
+            <div class="modal-body" id="order_show">
+                <h3>Modal Body</h3>
+                <div class="table_main ">
+                    <div class="img_item">
+                        <img src="~/Images/no-image-found.png" class="img_item_" />
+                    </div>
+                    <div class="infor_table">
+                        <h3 style="margin-top:2%"><strong>Coffee 1</strong></h3>
+                        <h5>Coffee</h5>
+                        <div class="btn btn-warning infor_table_sl">SL:</div>
+                        <div class="btn btn-success infor_table_dg">Đơn Giá:</div>
+                    </div>
+                </div>
+                <div class="table_main ">
+                    <div class="img_item">
+                        <img src="~/Images/no-image-found.png" class="img_item_" />
+                    </div>
+                    <div class="infor_table">
+                        <h3 style="margin-top:2%"><strong>Coffee 1</strong></h3>
+                        <h5>Coffee</h5>
+                        <div class="btn btn-warning infor_table_sl">SL:</div>
+                        <div class="btn btn-success infor_table_dg">Đơn Giá:</div>
+                    </div>
+                </div>
+                <div class="table_main ">
+                    <div class="img_item">
+                        <img src="~/Images/no-image-found.png" class="img_item_" />
+                    </div>
+                    <div class="infor_table">
+                        <h3 style="margin-top:2%"><strong>Coffee 1</strong></h3>
+                        <h5>Coffee</h5>
+                        <div class="btn btn-warning infor_table_sl">SL:</div>
+                        <div class="btn btn-success infor_table_dg">Đơn Giá:</div>
+                    </div>
+                </div>
+                <div class="table_main ">
+                    <div class="img_item">
+                        <img src="~/Images/no-image-found.png" class="img_item_" />
+                    </div>
+                    <div class="infor_table">
+                        <h3 style="margin-top:2%"><strong>Coffee 1</strong></h3>
+                        <h5>Coffee</h5>
+                        <div class="btn btn-warning infor_table_sl">SL:</div>
+                        <div class="btn btn-success infor_table_dg">Đơn Giá:</div>
+                    </div>
+                </div>
+            </div>
+            <h2 class="text-align right"><strong id="sum_gia">Tổng: &nbsp;</strong></h2>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary">Đặt Hàng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/xuLy.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.btn-shopping').click(function () {
+            $('body').css({ 'padding-right': '0px' });
+        })
+
+    });
+
+</script>

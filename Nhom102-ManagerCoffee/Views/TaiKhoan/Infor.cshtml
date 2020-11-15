@@ -1,0 +1,202 @@
+﻿@{ 
+    ViewBag.Title = "Thông Tin";
+}
+
+<div class="inner-banner">
+</div>
+<section class="w3l-breadcrumb">
+    <div class="container">
+        <ul class="breadcrumbs-custom-path">
+            <li><a href="#url">Trang Chủ</a></li>
+            <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> @ViewBag.Title</li>
+        </ul>
+    </div>
+</section>
+
+<div style="margin-top:5%">
+    <div style="background-color:beige;width:80%;margin-left:10%;margin-bottom:5%; padding:5%">
+        <div class="left" style="margin-top:-4%;margin-bottom:7%;margin-left:-3%">
+            <button class="btn btn-default" id="TaiKhoan">Tài Khoản</button>
+            <button class="btn btn-default" id="DonHang">Đơn Hàng</button>
+            <button class="btn btn-default" id="KhuyenMai">Khuyến Mãi</button>
+        </div>
+        <!--TaiKhoan-->
+        <div id="TaiKhoan_content">
+            <div class="form-group-lg row" style="margin-left:10%">
+                <div class="col-lg-6">
+                    <label>Họ Tên</label>
+                    <input class="form-control" id="hoten" />
+                </div>
+                <div class="col-lg-6">
+                    <label>Năm Sinh</label>
+                    <input type="date" class="form-control" id="namsinh"/>
+                </div>
+            </div>
+            <div class="form-group-lg row" style="margin-top:4%;margin-left:10%">
+                <div class="col-lg-6">
+                    <label>Địa Chỉ</label>
+                    <input class="form-control" id="diachi"/>
+                </div>
+                <div class="col-lg-6">
+                    <label>Giới Tính</label><br />
+                    <label class="radio-inline"><input value="Nam" type="radio" name="gioitinh" checked>Nam</label>
+                    <label class="radio-inline"><input value="Nữ" type="radio" name="gioitinh">Nữ</label>
+                </div>
+            </div>
+            <div class="form-group-lg row" style="margin-top:4%;margin-left:10%">
+                <div class="col-lg-6">
+                    <label>Điện Thoại</label>
+                    <input class="form-control" id="dienthoai"/>
+                </div>
+                <div class="col-lg-6"> </div>
+            </div>
+            <div class="form-group-lg row" style="margin-top:4%;margin-left:10%">
+                <div class="col-lg-6">
+                    <label>Tài Khoản</label>
+                    <input class="form-control" id="taikhoan1"/>
+                </div>
+                <div class="col-lg-6">
+                    <label>Mật Khẩu</label>
+                    <input type="password" class="form-control" id="matkhau1" />
+                </div>
+            </div>
+        </div>
+        <!--/DonHang-->
+        <div id="DonHang_content">
+            <div class="form-group-lg row" style="margin-left:10%">
+                <div class="col-lg-6">
+                    <label>Họ Tên</label>
+                    <input class="form-control" />
+                </div>
+                <div class="col-lg-6">
+                    <label>Năm Sinh</label>
+                    <input type="date" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group-lg row" style="margin-top:4%;margin-left:10%">
+                <div class="col-lg-6">
+                    <label>Địa Chỉ</label>
+                    <input class="form-control" />
+                </div>
+                <div class="col-lg-6">
+                    <label>Giới Tính</label><br />
+                    <label class="radio-inline"><input value="Nam" type="radio" name="gioitinh" checked>Nam</label>
+                    <label class="radio-inline"><input value="Nữ" type="radio" name="gioitinh">Nữ</label>
+                </div>
+            </div>
+            <div class="form-group-lg row" style="margin-top:4%;margin-left:10%">
+                <div class="col-lg-6">
+                    <label>Điện Thoại</label>
+                    <input class="form-control" />
+                </div>
+                <div class="col-lg-6"> </div>
+            </div>
+            <div class="form-group-lg row" style="margin-top:4%;margin-left:10%">
+                <div class="col-lg-6">
+                    <label>Tài Khoản</label>
+                    <input class="form-control" />
+                </div>
+                <div class="col-lg-6">
+                    <label>Mật Khẩu</label>
+                    <input type="password" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <!--/KhuyenMai-->
+        <div id="KhuyenMai_content">
+            <div class="form-group-lg row" style="margin-left:10%">
+                <div class="col-lg-6">
+                    <label>Họ Tên</label>
+                    <input class="form-control" />
+                </div>
+                <div class="col-lg-6">
+                    <label>Năm Sinh</label>
+                    <input type="date" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group-lg row" style="margin-top:4%;margin-left:10%">
+                <div class="col-lg-6">
+                    <label>Địa Chỉ</label>
+                    <input class="form-control" />
+                </div>
+                <div class="col-lg-6">
+                    <label>Giới Tính</label><br />
+                    <label class="radio-inline"><input value="Nam" type="radio" name="gioitinh" checked>Nam</label>
+                    <label class="radio-inline"><input value="Nữ" type="radio" name="gioitinh">Nữ</label>
+                </div>
+            </div>
+            <div class="form-group-lg row" style="margin-top:4%;margin-left:10%">
+                <div class="col-lg-6">
+                    <label>Điện Thoại</label>
+                    <input class="form-control" />
+                </div>
+                <div class="col-lg-6"> </div>
+            </div>
+            <div class="form-group-lg row" style="margin-top:4%;margin-left:10%">
+                <div class="col-lg-6">
+                    <label>Tài Khoản</label>
+                    <input class="form-control" id="taikhoan1"/>
+                </div>
+                <div class="col-lg-6">
+                    <label>Mật Khẩu</label>
+                    <input type="password" class="form-control"  id="matkhau1"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("input[type='radio']").click(function () {
+            var radioValue = $("input[name='gioitinh']:checked").val();
+            if (radioValue) {
+                alert("Your are a - " + radioValue);
+            }
+        });
+
+        $("#DonHang_content").hide();
+        $("#KhuyenMai_content").hide();
+        $("#TaiKhoan_content").hide();
+
+        TaiKhoan_KhachHang();
+        TaiKhoan();
+    });
+
+    function TaiKhoan_KhachHang() {
+        $.ajax({
+            url: "GetInfor",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                $.each(result, function (key, item) {
+                    $("#hoten").val(item.hoten);
+                    $("#diachi").val(item.diachi);
+                    $("#dienthoai").val(item.sdt);
+                    $("#gioitinh").val(item.gioitinh);
+
+                });
+                $('#TaiKhoan_content').show({ direction: "left" }, 1500);
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+    }
+    function TaiKhoan() {
+        $.ajax({
+            url: "GetInfor_TaiKhoan",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                $("#taikhoan1").val(data.taikhoan1);
+                $("#matkhau1").val(data.matkhau);
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+    }
+</script>

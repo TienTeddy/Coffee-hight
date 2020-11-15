@@ -1,0 +1,53 @@
+﻿/*Table main*/
+.table_main {
+    width: 47%;
+    height: 150px;
+    box-shadow: 0.3em 0.3em 1em rgba(0,0,0,0.3);
+    margin-bottom: 1%;
+    padding: 2.5%;
+    padding-right: 2%;
+    background-color: white;
+    display: inline-block;
+    margin-left: 1.9%
+}
+
+.img_item {
+    position: absolute;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    box-shadow: 0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
+
+.img_item_ {
+    width: 100px;
+    height: 100px;
+    position: absolute
+}
+
+.img_item:hover {
+    box-shadow: 0.3em 0.3em 1em cadetblue;
+    animation-duration: 0.3s;
+}
+
+
+
+.infor_table {
+    float: right;
+    width: 220px;
+    height: 100px;
+    background-color: white;
+}
+
+.infor_table_sl {
+    display: inline-block;
+    margin-top: 3%
+}
+
+.infor_table_dg {
+    display: inline-block;
+    float: right;
+    margin-top: 3%
+}
+
+/*shopping-icon*/

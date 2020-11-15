@@ -1,0 +1,129 @@
+﻿@model Nhom102_ManagerCoffee.Models.Models_TaiKhoan
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <!-- custom-theme -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+               function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //custom-theme -->
+    <link href="~/Content/login/style.css" rel="stylesheet" />
+    <!-- js -->
+    <script src="~/Scripts/login/jquery-1.9.1.min.js"></script>
+    <!--// js -->
+    <link href="~/Content/login/easy-responsive-tabs.css" rel="stylesheet" />
+    <link href="~/Content/login/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="bg agileinfo">
+    <h1 class="agile_head text-center"> COFFEE</h1>
+    <div class="w3layouts_main wrap">
+        <!--Horizontal Tab-->
+        <div id="parentHorizontalTab_agile">
+            <ul class="resp-tabs-list hor_1">
+                <li>Đăng Nhập</li>
+                <li>Đăng Kí</li>
+            </ul>
+            <div class="resp-tabs-container hor_1">
+                <div class="w3_agile_login">
+                    @using (Html.BeginForm("Login", "TaiKhoan", FormMethod.Post))
+                    {
+                        @Html.ValidationSummary(false, "", new { @Class = "text-danger" }) // show error required models TaiKhoan
+                        @Html.AntiForgeryToken()
+                        <div class="agile_form">
+                            <p>Tài Khoản</p>
+                            @*<input type="text" name="username" />*@
+                            @Html.TextBoxFor(m => m.taikhoan1, "", new { @Type = "text" })
+                            <p>Mật Khẩu</p>
+                            @*<input type="password" name="password" required class="password" />*@
+                            @Html.TextBoxFor(m => m.matkhau, "", new { @Class = "password", @Type = "password" })
+                            <div class="check">
+                                <label class="checkbox w3l">
+                                    @Html.CheckBoxFor(m => m.checkbox, new { @Type = "checkbox" })
+                                    <i> </i>Ghi Nhớ !
+                                </label>
+                            </div>
+                            <input type="submit" name="submit" value="Đăng Nhập" class="agileinfo" />
+                        </div>
+                    }
+                    <hr>
+                    <div class="social-icons">
+                        <div class="social-login">
+
+                            <a href="#" onclick="signOut();">Sign out</a>
+                        </div>
+                    </div>
+
+                    <div class="login_w3ls">
+                        <a href="#">Quên Mật Khẩu...?</a>
+                    </div>
+
+                </div>
+                <div class="agile_its_registration">
+                    <form action="#" method="post" class="agile_form">
+                        <p>Tên</p>
+                        <input type="text" name="name" required />
+                        <p>Email</p>
+                        <input type="email" name="email" required />
+                        <p>Mật Khẩu</p>
+                        <input type="password" name="Password" id="password1" required="required">
+                        <p>Nhập Lại Mật Khẩu</p>
+                        <input type="password" name="Confirm Password" id="password2" required="required">
+                        <div class="check w3_agileits">
+                            <label class="checkbox w3"><input type="checkbox" name="checkbox" required><i> </i>Tôi chấp nhận các điều khoản!</label><br />
+                        </div>
+                        <input type="submit" value="Đăng Kí" />
+                        <input type="reset" value="Đặt Lại" />
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- //Horizontal Tab -->
+    </div>
+
+    <script src="~/Scripts/login/easyResponsiveTabs.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Horizontal Tab
+            $('#parentHorizontalTab_agile').easyResponsiveTabs({
+                type: 'default', //Types: default, vertical, accordion
+                width: 'auto', //auto or any width like 600px
+                fit: true, // 100% fit in a container
+                tabidentify: 'hor_1', // The tab groups identifier
+                activate: function (event) { // Callback function if tab is switched
+                    var $tab = $(this);
+                    var $info = $('#nested-tabInfo');
+                    var $name = $('span', $info);
+                    $name.text($tab.text());
+                    $info.show();
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        window.onload = function () {
+            document.getElementById("password1").onchange = validatePassword;
+            document.getElementById("password2").onchange = validatePassword;
+        }
+        function validatePassword() {
+            var pass2 = document.getElementById("password2").value;
+            var pass1 = document.getElementById("password1").value;
+            if (pass1 != pass2)
+                document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+            else
+                document.getElementById("password2").setCustomValidity('');
+            //empty string means no validation error
+        }
+
+    </script>
+    <!--//tabs-->
+</body>
+</html>
+
