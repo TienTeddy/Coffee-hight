@@ -15,6 +15,12 @@ namespace Mode.DAO
             db = new Context_();
         }
 
+        public TaiKhoan GetTaiKhoan(string taikhoan)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            return db.TaiKhoans.Single(x=>x.taikhoan1==taikhoan);
+        }
+
         public TaiKhoan GetTaiKhoan_user(string user, string pass)
         {
             db.Configuration.ProxyCreationEnabled = false;
@@ -53,6 +59,36 @@ namespace Mode.DAO
                 return -1;
             }
 
+        }
+
+        public int Create_TaiKhoan(string loaitk,string taikhoan, string matkhau)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            if (db.TaiKhoans.Count(x => x.taikhoan1 == taikhoan) > 0)
+            {
+                if(db.TaiKhoans.Count(x => x.matkhau == matkhau) > 0)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+            else //not exits account
+            {
+                var tk = new TaiKhoan()
+                {
+                    loaitk = loaitk,
+                    taikhoan1 = taikhoan,
+                    matkhau = matkhau
+                };
+                var result = db.TaiKhoans.Add(tk);
+
+                db.SaveChanges();
+                if (result != null) return 1;
+                else return 0;
+            }  
         }
     }
 }

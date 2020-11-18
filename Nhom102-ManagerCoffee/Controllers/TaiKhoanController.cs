@@ -1,12 +1,15 @@
 ﻿using Mode.DAO;
 using Mode.Models;
+using Facebook;
 using Nhom102_ManagerCoffee.Common;
 using Nhom102_ManagerCoffee.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace Nhom102_ManagerCoffee.Controllers
 {
@@ -112,6 +115,117 @@ namespace Nhom102_ManagerCoffee.Controllers
         public ActionResult Reset()
         {
             return View();
+        }
+
+        //Login FB
+        private Uri RedirectUri
+        {
+            get
+            {
+                var uriBuilder = new UriBuilder(Request.Url);
+                uriBuilder.Query = null;
+                uriBuilder.Fragment = null;
+                uriBuilder.Path = Url.Action("FacebookCallback");
+                return uriBuilder.Uri;
+            }
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult LoginFacebook()
+        {
+            var fb = new FacebookClient();
+            var loginUrl = fb.GetLoginUrl(new
+            {
+                client_id = ConfigurationManager.AppSettings["FbAppId"],
+                client_secret = ConfigurationManager.AppSettings["FbAppSecret"],
+                redirect_uri = RedirectUri.AbsoluteUri,
+                response_type = "code",
+                scope = "email" // Add other permissions as needed
+            });
+
+            return Redirect(loginUrl.AbsoluteUri);
+        }
+
+        public ActionResult FacebookCallback(string code)
+        {
+            var fb = new FacebookClient();
+            dynamic result = fb.Post("oauth/access_token", new
+            {
+                client_id = ConfigurationManager.AppSettings["FbAppId"],
+                client_secret = ConfigurationManager.AppSettings["FbAppSecret"],
+                redirect_uri = RedirectUri.AbsoluteUri,
+                code = code
+            });
+
+            var accessToken = result.access_token;
+
+            // Store the access token in the session for farther use
+            Session["AccessToken"] = accessToken;
+
+            // update the facebook client with the access token so 
+            // we can make requests on behalf of the user
+            fb.AccessToken = accessToken;
+
+            // Get the user's information
+            dynamic me = fb.Get("me?fields=name,id,email,picture");
+            string email = me.email;
+            string name = me.name;
+            string id = me.id;
+            string picture = "https://graph.facebook.com/" + id + "/picture?type=normal";
+
+
+            var dao = new TaiKhoanDAO();
+            int result_tk = dao.Create_TaiKhoan("Khách Hàng",email,"");
+
+            if (result_tk == 1)
+            {
+                //TempData["NewCustomer"] = user;
+
+                // Set the auth cookie
+                FormsAuthentication.SetAuthCookie(email, false);
+
+                SessionHelper.SetSession(new AccLogin() { TaiKhoan1 = email, MatKhau = "" });
+                return RedirectToAction("Index", "Home", new { area = "" });
+            }
+            if (result_tk == 2)
+            {
+                var result2 = dao.GetTaiKhoan(email);
+                SessionHelper.SetSession(new AccLogin() { TaiKhoan1 = result2.taikhoan1, MatKhau=result2.matkhau });
+                return View("Index");
+            }
+            else
+            {
+                return View("Index");
+            }
+        }
+
+        //LoginGG
+        public ActionResult LoginGoogle(string name, string email)
+        {
+            var dao = new TaiKhoanDAO();
+            int result_tk = dao.Create_TaiKhoan("Khách Hàng", email, "");
+
+            if (result_tk == 1)
+            {
+                //TempData["NewCustomer"] = user;
+
+                // Set the auth cookie
+                FormsAuthentication.SetAuthCookie(email, false);
+
+                SessionHelper.SetSession(new AccLogin() { TaiKhoan1 = email, MatKhau = "" });
+                return RedirectToAction("Index", "Home", new { area = "" });
+            }
+            if (result_tk == 2)
+            {
+                var result2 = dao.GetTaiKhoan(email);
+                SessionHelper.SetSession(new AccLogin() { TaiKhoan1 = result2.taikhoan1, MatKhau = result2.matkhau });
+                return View("Index");
+            }
+            else
+            {
+                return View("Index");
+            }
         }
     }
 }

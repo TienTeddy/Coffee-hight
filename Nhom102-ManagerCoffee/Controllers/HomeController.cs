@@ -1,5 +1,6 @@
 ﻿using Mode;
 using Mode.DAO;
+using Nhom102_ManagerCoffee.Common;
 using Nhom102_ManagerCoffee.Models;
 using System;
 using System.Collections;
@@ -14,6 +15,18 @@ namespace Nhom102_ManagerCoffee.Controllers
     {
         public ActionResult Index()
         {
+            var session_acc = SessionHelper.GetSession();
+            if (session_acc != null)
+            {
+                if (session_acc.MatKhau == "")
+                {
+                    ViewBag.setpass = "YES";
+                }
+            }
+            else
+            {
+                ViewBag.setpass = "NO";
+            }
             return View();
         }
 

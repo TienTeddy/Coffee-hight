@@ -10,6 +10,8 @@
     <!-- custom-theme -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="google-signin-client_id" content="900089408230-qu60jqfc66qhoasdjddqas7r4vudi9me.apps.googleusercontent.com">
+
     <script type="application/x-javascript">
         addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
                function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -56,8 +58,8 @@
                     <hr>
                     <div class="social-icons">
                         <div class="social-login">
-
-                            <a href="#" onclick="signOut();">Sign out</a>
+                            <a href="~/TaiKhoan/LoginFacebook" class="facebook" style="width:40px;height:40px;"><span class="fa fa-facebook"></span></a>
+                            <div class="g-signin2" onclick="loginGG()" data-onsuccess="onSignIn" style="width:40px;height:40px;"></div>
                         </div>
                     </div>
 
@@ -124,6 +126,37 @@
 
     </script>
     <!--//tabs-->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script>
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+           // console.log('ID: ' + profile.getId());
+            console.log('Name: ' + profile.getName());
+            //console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail());
+
+            $.ajax({
+                url: "LoginGoogle?name=" + profile.getName() + "&email=" + profile.getEmail(),
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+        }
+        function loginGG() {
+            setTimeout(function () {
+                window.location.href = "/Home/Index";
+            }, 1500);
+        }
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+                console.log('User signed out.');
+            });
+        }
+    </script>
 </body>
 </html>
 
