@@ -20,6 +20,10 @@ namespace Nhom102_ManagerCoffee.Areas.Admin.Controllers
             }
             return View();
         }
+        public ActionResult Table()
+        {
+            return View();
+        }
         public JsonResult SanPham_GetAll()
         {
             var dao = new SanPhamDAO();
