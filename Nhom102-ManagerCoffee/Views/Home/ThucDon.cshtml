@@ -36,7 +36,7 @@
                 <h3 class="title-small text-center">Coffee - <span>We make the delicious coffee</span></h3>
                 <div class="row menu-body" id="menu-body">
                     @foreach (var item in Model)
-                    {
+                    { 
                         <div class="col-lg-6 menu-section pr-lg-5">
                             <!-- Item starts -->
                             <div class="menu-item">
@@ -47,7 +47,7 @@
                                             <h6>@item.tensanpham</h6> <!--tensanpham-->
                                         </div>
                                         <div class="col-4 menu-item-price text-right">
-                                            <h6>@item.gia &nbsp;VNĐ</h6> <!--gia-->
+                                            <h6>@string.Format("{0:C0}", item.gia) &nbsp;VNĐ</h6> <!--gia-->
                                         </div>
                                     </div>
 
@@ -88,8 +88,8 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Đơn Hàng</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">l</h4>
             </div>
             <div class="modal-body" id="order_show">
                 <h3>Modal Body</h3>

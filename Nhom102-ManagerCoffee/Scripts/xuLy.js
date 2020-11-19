@@ -5,7 +5,6 @@ $(document).ready(function () {
 
     LoaiSP_GetAll();
 
-   
 });
 
 function LoaiSP_GetAll() {
@@ -81,10 +80,32 @@ function load_category(id_loai) {
 
 var value_cart = [];
 function getvalue_cart(id_sanpham, id_loai, tensanpham, gia) {
-    value_cart.push({
-        idsanpham: id_sanpham, idloai: id_loai, tensp: tensanpham, giasp: gia
-    });
-    number += 1;
+    var flat = 0;
+
+    if (value_cart != null) {
+        for (var i = 0; i < number; i++) {
+            if (value_cart[i].idsanpham == id_sanpham) {
+                value_cart[i].soluong += 1;
+                break;
+            }
+            else {
+                flat += 1;
+            }
+        }
+        if (flat == number) {
+            value_cart.push({
+                idsanpham: id_sanpham, idloai: id_loai, tensp: tensanpham, giasp: gia, soluong: 1
+            });
+            number += 1;
+        }
+    }
+    else {
+        value_cart.push({
+            idsanpham: id_sanpham, idloai: id_loai, tensp: tensanpham, giasp: gia, soluong: 1
+        });
+        number += 1;
+    }
+
     $('#icon_tick_success').show();
     setTimeout(() => {
         $('#icon_tick_success').hide();
@@ -104,15 +125,28 @@ function order() {
         html += '</div>';
         html += '<div class="infor_table">';
         html += '<h3 style="margin-top:2%"><strong>' + value_cart[i].tensp + '</strong></h3>';
-       // html += '<h5>' + value_cart[i]. + '</h5>';
-        html += '<input class="btn btn-warning infor_table_sl" type="number" value="1" style="width:70px;margin-top:10%"/>';
-        html += '<div class="btn btn-success infor_table_dg" style="margin-top:10%">Đơn Giá:' + value_cart[i].giasp + '</div>';
+        // html += '<h5>' + value_cart[i]. + '</h5>';
+        html += '<input oninput="changeMoney(' + Number(value_cart[i].idsanpham) + ')" class="btn btn-warning infor_table_sl" id="' + Number(value_cart[i].idsanpham) + '" type="number" min="0" max="100" value="' + value_cart[i].soluong + '" style="width:70px;margin-top:10%"/>';
+        html += '<div class="btn btn-success infor_table_dg" style="margin-top:10%">Đơn Giá: ' + Number(value_cart[i].giasp).toLocaleString('vi', { style: 'currency', currency: 'VND' }) + '</div>';
         html += '</div>';
         html += '</div>';
-        sum_gia += Number(value_cart[i].giasp);//*soluong
+        sum_gia += Number(value_cart[i].giasp * value_cart[i].soluong);//*soluong 12000/x=12.000
     }
-
-    $('#sum_gia').html("Tổng:&nbsp;" + sum_gia);
+    
+    $('#sum_gia').html("Tổng:&nbsp;" + sum_gia.toLocaleString('vi', { style: 'currency', currency: 'VND' }));
     $('#order_show').html(html);
 
+}
+
+function changeMoney(idsp) {
+    var x = document.getElementById(idsp).value;
+    var sum = 0;
+    for (var i = 0; i < number; i++) {
+        if (value_cart[i].idsanpham == idsp) {
+            value_cart[i].soluong = x;
+        }
+        sum += value_cart[i].giasp * value_cart[i].soluong;
+    }
+
+    $('#sum_gia').html("Tổng:&nbsp;" + sum.toLocaleString('vi', { style: 'currency', currency: 'VND' }));
 }
