@@ -6,12 +6,18 @@
     font: 12px/18px 'HelveticaNeue', Helvetica, Arial, sans-serif;
 }
 
+.container {
+    position: absolute;
+    margin-left: 90px;
+}
+
 .table-wrapper {
     background: #fff;
     padding: 20px 25px;
     margin: 30px 0;
     border-radius: 1px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.247);
+    display: block;
 }
 
 .table-title {

@@ -17,7 +17,7 @@
                 </div>
                 <!-- Button-->
                 <div class="col-sm-8">
-                    <a href="#Add-TaiKhoan" class="btn btn-success btn-sm" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Thêm mới</span></a>
+                    <a href="#Add-Coupon" class="btn btn-success btn-sm" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Thêm mới</span></a>
                     <a href="#deleteEmployeeModal" class="btn btn-danger btn-sm" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Xóa</span></a>
                     <a href="#link" class="btn btn-info btn-sm" data-toggle="#"> <span>Xuất Data</span></a>
                     <a href="#Table-LichSu" class="btn btn-info btn-sm" data-toggle="#"> <span>Lịch Sử</span></a>
@@ -91,7 +91,7 @@
                     <td>10</td>
                     <td>
                         <div id="CRUD-button">
-                            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a href="#Edit-SanPham" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                             <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </div>
                     </td>
@@ -138,7 +138,7 @@
                     <td>20,000</td>
                     <td>
                         <div id="CRUD-button">
-                            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a href="#Edit-LoaiSP" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                             <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </div>
                     </td>
@@ -185,7 +185,57 @@
                     <td>Đã Thanh Toán</td>
                     <td>
                         <div id="CRUD-button">
-                            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a href="#Edit-HoaDon" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <!--Coupon-->
+        <table class="table table-striped table-hover" id="Table-Coupon">
+            <div style="width:800px;" id="Table-title">Coupon</div>
+            <thead>
+                <tr>
+                    <th>
+                        <span class="custom-checkbox">
+                            <input type="checkbox" id="selectAll">
+                            <label for="selectAll"></label>
+                        </span>
+                    </th>
+                    <th>Mã CP</th>
+                    <th>Tên Coupon</th>
+                    <th>Thời Gian Tồn Tại</th>
+                    <th>Ngày Bắt Đầu</th>
+                    <th>Ngày Kết Thúc</th>
+                    <th>Giá Trị Giảm</th>
+                    <th>Giá Trị Giảm Tối Đa</th>
+                    <th>Trạng Thái</th>
+                    <th>Tình Trạng</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td>
+                        <span class="custom-checkbox">
+                            <input type="checkbox" id="checkbox2" name="options[]" value="1">
+                            <label for="checkbox2"></label>
+                        </span>
+                    </td>
+                    <td>CP01</td>
+                    <td>BF_NEWS</td>
+                    <td>2 Ngày</td>
+                    <td>11-11-2020</td>
+                    <td>13-11-2020</td>
+                    <td>50%</td>
+                    <td>500,000đ</td>
+                    <td>Đã Kích Hoạt</td>
+                    <td>Chưa Sử Dụng</td>
+                    <td>
+                        <div id="CRUD-button">
+                            <a href="#Edit-Coupon" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                             <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </div>
                     </td>
@@ -231,7 +281,7 @@
                         <div id="CRUD-button">
                             <a href="#" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Hide" style="color: #00fff3;">&#xe8f5;</i></a>
                             <a href="#" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Show" style="color: #ff8100;">&#xe8f4;</i></a>
-                            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a href="#Edit-TaiKhoan" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                             <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </div>
                     </td>
@@ -277,7 +327,7 @@
                     <td>150</td>
                     <td>
                         <div id="CRUD-button">
-                            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a href="#Edit-KhachHang" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                             <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </div>
                     </td>
@@ -324,7 +374,7 @@
                     <td>3,500,000</td>
                     <td>
                         <div id="CRUD-button">
-                            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a href="#Edit-NhanVien" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                             <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </div>
                     </td>
@@ -365,19 +415,19 @@
                     <td>Trần Tấn Đạt</td>
                     <td>
                         <div id="CRUD-button">
-                            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a href="#Edit-LichSu" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                             <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </div>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <!--Table Data -->
+        <!--Table Data-->
         <!--Chart-Statistic-->
         <table class="table table-striped table-hover" id="Table-Chart">
             <div style="width:800px;" id="Table-title">Thống Kê</div>
 
-            <div class="container">
+            <div class="container-chart">
                 <h2>Biểu Đồ</h2>
                 <canvas id="myChart"></canvas>
             </div>
@@ -391,7 +441,6 @@
         <!---->
     </div>
 </div>
-
 <!-- Modal-Add New -->
 <!-- Modal-AddSanPham -->
 <div id="Add-SanPham" class="modal fade">
@@ -422,6 +471,10 @@
                     </div>
                     <div class="form-group">
                         <label>Giá Tiền</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Số Lượng</label>
                         <input type="text" class="form-control" required>
                     </div>
                     <div class="form-group">
@@ -471,6 +524,61 @@
                     <div class="form-group">
                         <label>Mô tả</label>
                         <textarea class="form-control" rows="5" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy Bỏ">
+                    <input type="submit" class="btn btn-success" value="Thêm">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal-AddCoupon-->
+<div id="Add-Coupon" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Thêm Coupon Mới</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Mã CP</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tên Coupon</label>
+                        <input type="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Thời Gian Tồn Tại</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày Bắt Đầu</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày Kết Thúc</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Giá Trị Giảm</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Giá Trị Giảm Tối Đa</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Trạng Thái</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tình Trạng</label>
+                        <input type="text" class="form-control" required>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -571,40 +679,524 @@
         </div>
     </div>
 </div>
-
-
-
-<!-- /Modal-Add New -->
-<!-- Edit Modal HTML -->
-<div id="editEmployeeModal" class="modal fade">
+<!-- Modal-AddNhanVien-->
+<div id="Add-NhanVien" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <form>
                 <div class="modal-header">
-                    <h4 class="modal-title">Edit Employee</h4>
+                    <h4 class="modal-title">Thêm Nhân Viên Mới</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Name</label>
+                        <label>Mã NV</label>
                         <input type="text" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label>Email</label>
+                        <label>Họ Tên Nhân Viên</label>
                         <input type="email" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label>Address</label>
-                        <textarea class="form-control" required></textarea>
+                        <label>Ca Làm Việc</label>
+                        <input type="text" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label>Phone</label>
+                        <label>Giới Tính</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Địa Chỉ</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>SĐT</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tổng Giờ Làm</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tổng Tiền</label>
                         <input type="text" class="form-control" required>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-info" value="Save">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy Bỏ">
+                    <input type="submit" class="btn btn-success" value="Thêm">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal-AddKhachHang-->
+<div class="modal fade" id="Add-KhachHang" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Thêm Khách Hàng Mới</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Mã KH</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Họ Tên Khách Hàng</label>
+                        <input type="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày Sinh</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Giới Tính</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Địa Chỉ</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>SĐT</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Điểm</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy Bỏ">
+                    <input type="submit" class="btn btn-success" value="Thêm">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal-AddLichSu-->
+<div class="modal fade" id="Add-LichSu" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Thêm Lịch Sử Mới</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>STT</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Công Việc</label>
+                        <input type="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày Thực Hiện</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Hoạt Động</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Người Thực Hiện</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy Bỏ">
+                    <input type="submit" class="btn btn-success" value="Thêm">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- /Modal-Add New -->
+
+<!-- Edit Modal HTML -->
+<!-- Edit-Modal SanPham-->
+<div class="modal fade" id="Edit-SanPham" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Sửa Sản Phẩm</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Tên Sản Phẩm</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Mã Loại</label>
+                        <input type="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Hình Ảnh</label>
+                        <div class="file-field">
+                            <div class="btn btn-primary btn-sm float-left" style="padding-right: 40px">
+                                <span>Chọn File Hình</span>
+                                <input type="file">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Giá Tiền</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Số Lượng</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Mô tả</label>
+                        <textarea class="form-control" rows="5" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy Bỏ">
+                    <input type="submit" class="btn btn-success" value="Sửa">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Edit-Modal LoaiSP-->
+<div class="modal fade" id="Edit-LoaiSP" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Sửa Loại Sản Phẩm</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Mã Loại</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tên Loại Sản Phẩm</label>
+                        <input type="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Giá Bán Ra</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Hình Ảnh</label>
+                        <div class="file-field">
+                            <div class="btn btn-primary btn-sm float-left" style="padding-right: 40px">
+                                <span>Chọn File Hình</span>
+                                <input type="file">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Mô tả</label>
+                        <textarea class="form-control" rows="5" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy Bỏ">
+                    <input type="submit" class="btn btn-success" value="Sửa">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Edit-HoaDon-->
+<div class="modal fade" id="Edit-HoaDon" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Sửa Hóa Đơn</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Mã HĐ</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tên Khách Hàng</label>
+                        <input type="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Thời Gian</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Điểm Cộng</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Số Lượng</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Giảm Giá</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tổng Giá</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Trạng Thái</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy Bỏ">
+                    <input type="submit" class="btn btn-success" value="Sửa">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Edit-TaiKhoan-->
+<div class="modal fade" id="Edit-TaiKhoan" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Sửa Tài Khoản</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Mã TK</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Mã NV</label>
+                        <input type="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <div id="Modal-Add-SH-button">
+                            <a href="#" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Hide" style="color: #00fff3;">&#xe8f5;</i></a>
+                            <a href="#" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Show" style="color: #ff8100;">&#xe8f4;</i></a>
+                        </div>
+                        <input type="text" class="form-control" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy Bỏ">
+                    <input type="submit" class="btn btn-success" value="Sửa">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Edit-KhachHang-->
+<div class="modal fade" id="Edit-KhachHang" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Sửa Khách Hàng</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Mã KH</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Họ Tên Khách Hàng</label>
+                        <input type="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày Sinh</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Giới Tính</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Địa Chỉ</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>SĐT</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Điểm</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy Bỏ">
+                    <input type="submit" class="btn btn-success" value="Sửa">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Edit-NhanVien-->
+<div class="modal fade" id="Edit-NhanVien" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Thêm Nhân Viên Mới</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Mã NV</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Họ Tên Nhân Viên</label>
+                        <input type="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Ca Làm Việc</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Giới Tính</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Địa Chỉ</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>SĐT</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tổng Giờ Làm</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tổng Tiền</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy Bỏ">
+                    <input type="submit" class="btn btn-success" value="Sửa">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Edit-LichSu-->
+<div class="modal fade" id="Edit-LichSu" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Sửa Lịch Sử</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>STT</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Công Việc</label>
+                        <input type="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày Thực Hiện</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Hoạt Động</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Người Thực Hiện</label>
+                        <input type="text" class="form-control" required>
+                    </div>  
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy Bỏ">
+                    <input type="submit" class="btn btn-success" value="Sửa">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Edit-Coupon-->
+<div id="Edit-Coupon" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Sửa Coupon</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Mã CP</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tên Coupon</label>
+                        <input type="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Thời Gian Tồn Tại</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày Bắt Đầu</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày Kết Thúc</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Giá Trị Giảm</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Giá Trị Giảm Tối Đa</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Trạng Thái</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tình Trạng</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy Bỏ">
+                    <input type="submit" class="btn btn-success" value="Sửa">
                 </div>
             </form>
         </div>
