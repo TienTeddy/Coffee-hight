@@ -170,9 +170,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\assets\css\Admin.css" />
     <Content Include="Areas\Admin\assets\css\dropdown.css" />
     <Content Include="Areas\Admin\assets\css\pop.css" />
-    <Content Include="Areas\Admin\assets\css\Table-Admin.css" />
     <Content Include="Areas\Admin\assets\img\avt-nam.jpg" />
     <Content Include="Areas\Admin\assets\img\Coca-Cola-Can-icon.png" />
     <Content Include="Areas\Admin\assets\img\no-image-found.png" />
@@ -291,6 +291,7 @@
     <Content Include="Areas\Admin\assets\js\umd\popper.js" />
     <Content Include="Areas\Admin\assets\js\umd\popper.min.js" />
     <Content Include="Areas\Admin\assets\js\xuLy.js" />
+    <Content Include="Areas\Admin\Views\Admin\Table.cshtml" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -301,6 +302,7 @@
     <Content Include="Content\modal-shipping.css" />
     <Content Include="Content\spinner.css" />
     <Content Include="Content\style-starter.css" />
+    <Content Include="Content\style-starter1.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -364,7 +366,6 @@
     <Content Include="Areas\Admin\assets\js\umd\popper.js.flow" />
     <Content Include="Areas\Admin\assets\js\umd\popper.js.map" />
     <Content Include="Areas\Admin\assets\js\umd\popper.min.js.map" />
-    <Content Include="Areas\Admin\Views\Admin\Table.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

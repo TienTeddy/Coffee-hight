@@ -21,7 +21,9 @@
     <div class="row">
         <div class="col-sm-5">
             <div class="profile-1">
+            <a href="#Modal-Info" data-toggle="modal">
                 <img class="profile-2 btn" src="~/Areas/Admin/assets/img/avt-nam.jpg" />
+            </a>
             </div>&nbsp;
             <div style="margin-top:70px;">
                 <h4>Name: Le Van Tien</h4>
@@ -33,6 +35,50 @@
             <div class="title btn" style="background-color:lightseagreen">LỊCH SỬ</div>
             <a href="~/Admin/Admin/Table" class="title btn" style="background-color:goldenrod">TABLE</a>
 
+        </div>
+    </div>
+    <!--Modal_info-->
+    <div class="modal fade" id="Modal-Info" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <form>
+                    <div class="modal-header">
+                        <h4 class="modal-title">Họ Tên</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Mã NV</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Giới Tính</label>
+                            <input type="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Địa Chỉ</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>SĐT</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Ca Làm Việc</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Giới Thiệu Bản Thân</label>
+                            <textarea class="form-control" rows="5" required></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cập Nhật">
+                        <input type="submit" class="btn btn-success" value="OK">
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 

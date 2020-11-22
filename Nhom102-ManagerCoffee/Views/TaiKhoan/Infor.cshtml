@@ -40,7 +40,7 @@
         <div class="col-sm-9">
             <ul class="nav nav-tabs" style="margin-top:10%">
                 <li class="active"><a data-toggle="tab" href="#home">Tài Khoản</a></li>
-                <li><a data-toggle="tab" href="#messages">Đơn Hàng</a></li>
+                <li><a data-toggle="tab" href="#cart">Đơn Hàng</a></li>
                 <li><a data-toggle="tab" href="#settings">Khuyến Mãi</a></li>
             </ul>
             <div class="tab-content" style="margin-top:10%">
@@ -98,78 +98,99 @@
                         </div>
                     </form>
 
-                </div><!--/tab-pane-->
-                <div class="tab-pane" id="messages">
+                </div>
 
-                    <h2></h2>
-                    <form class="form" action="##" method="post" id="registrationForm">
-                        <div class="form-group">
+                <!-- Table-DonHang -->
+            <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
+                <div class="tab-pane bootdey" id="cart">
+                <div class="panel panel-default panel-order">
+                <div class="panel-heading">
+                    <strong>order history</strong>
+                    <div class="btn-group pull-right">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">filter history <i class="fa fa-filter"></i></button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a href="#">approved orders</a></li>
+                                <li><a href="#">pending orders</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-                            <div class="col-xs-6">
-                                <label for="first_name"><h4>First name</h4></label>
-                                <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-1"><img src="https://bootdey.com/img/content/user_3.jpg" class="media-object img-thumbnail" /></div>
+                        <div class="col-md-11">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="pull-right"><label class="label label-danger">rejected</label></div>
+                                    <span><strong>order name</strong></span> <span class="label label-info">group name</span><br />
+                                    quantity : 2, cost: $323.13 <br />
+                                    <a data-placement="top" class="btn btn-success btn-xs glyphicon glyphicon-ok" href="#" title="view"></a>
+                                    <a data-placement="top" class="btn btn-danger btn-xs glyphicon glyphicon-trash" href="#" title="danger"></a>
+                                    <a data-placement="top" class="btn btn-info btn-xs glyphicon glyphicon-usd" href="#" title="danger"></a>
+                                </div>
+                                <div class="col-md-12">order made on: 05/31/2014 by <a href="#">jane doe </a></div>
                             </div>
                         </div>
-                        <div class="form-group">
+                    </div>
 
-                            <div class="col-xs-6">
-                                <label for="last_name"><h4>Last name</h4></label>
-                                <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
+                    <div class="row">
+                        <div class="col-md-1"><img src="https://bootdey.com/img/content/user_1.jpg" class="media-object img-thumbnail" /></div>
+                        <div class="col-md-11">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="pull-right"><label class="label label-info">pending</label></div>
+                                    <span><strong>order name</strong></span> <span class="label label-info">group name</span><br />
+                                    quantity : 12, cost: $12623.13<br />
+                                    <a data-placement="top" class="btn btn-success btn-xs glyphicon glyphicon-ok" href="#" title="view"></a>
+                                    <a data-placement="top" class="btn btn-danger btn-xs glyphicon glyphicon-trash" href="#" title="danger"></a>
+                                    <a data-placement="top" class="btn btn-info btn-xs glyphicon glyphicon-usd" href="#" title="danger"></a>
+                                </div>
+                                <div class="col-md-12">order made on: 06/12/2014 by <a href="#">jane doe </a></div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="form-group">
-
-                            <div class="col-xs-6">
-                                <label for="phone"><h4>Phone</h4></label>
-                                <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
+                    <div class="row">
+                        <div class="col-md-1"><img src="https://bootdey.com/img/content/user_3.jpg" class="media-object img-thumbnail" /></div>
+                        <div class="col-md-11">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="pull-right"><label class="label label-success">approved</label></div>
+                                    <span><strong>order name</strong></span> <span class="label label-info">group name</span><br />
+                                    quantity : 4, cost: $523.13<br />
+                                    <a data-placement="top" class="btn btn-success btn-xs glyphicon glyphicon-ok" href="#" title="view"></a>
+                                    <a data-placement="top" class="btn btn-danger btn-xs glyphicon glyphicon-trash" href="#" title="danger"></a>
+                                    <a data-placement="top" class="btn btn-info btn-xs glyphicon glyphicon-usd" href="#" title="danger"></a>
+                                </div>
+                                <div class="col-md-12">order made on: 06/20/2014 by <a href="#">jane doe</a></div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            <div class="col-xs-6">
-                                <label for="mobile"><h4>Mobile</h4></label>
-                                <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any.">
+                    <div class="row">
+                        <div class="col-md-1"><img src="https://bootdey.com/img/content/user_2.jpg" class="media-object img-thumbnail" /></div>
+                        <div class="col-md-11">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="pull-right"><label class="label label-info">pending</label></div>
+                                    <span><strong>order name</strong></span> <span class="label label-info">group name</span><br />
+                                    quantity : 4, cost: $523.13<br />
+                                    <a data-placement="top" class="btn btn-success btn-xs glyphicon glyphicon-ok" href="#" title="view"></a>
+                                    <a data-placement="top" class="btn btn-danger btn-xs glyphicon glyphicon-trash" href="#" title="danger"></a>
+                                    <a data-placement="top" class="btn btn-info btn-xs glyphicon glyphicon-usd" href="#" title="danger"></a>
+                                </div>
+                                <div class="col-md-12">order made on: 06/20/2014 by <a href="#">jane doe</a></div>
                             </div>
                         </div>
-                        <div class="form-group">
+                    </div>
+                </div>
+                <div class="panel-footer">put here some note for example: bootdey si a gallery of free bootstrap snippets bootdeys</div>
+            </div>
+        </div>
+                <!-- Table-DonHang -->
 
-                            <div class="col-xs-6">
-                                <label for="email"><h4>Email</h4></label>
-                                <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
-                            </div>
-                        </div>
-                        <div class="form-group">
-
-                            <div class="col-xs-6">
-                                <label for="email"><h4>Location</h4></label>
-                                <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location">
-                            </div>
-                        </div>
-                        <div class="form-group">
-
-                            <div class="col-xs-6">
-                                <label for="password"><h4>Password</h4></label>
-                                <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
-                            </div>
-                        </div>
-                        <div class="form-group">
-
-                            <div class="col-xs-6">
-                                <label for="password2"><h4>Verify</h4></label>
-                                <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                <br>
-                                <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                                <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
-                            </div>
-                        </div>
-                    </form>
-
-                </div><!--/tab-pane-->
                 <div class="tab-pane" id="settings">
                     <form class="form" action="##" method="post" id="registrationForm">
                         <div class="form-group">
@@ -233,7 +254,7 @@
                             <div class="col-xs-12">
                                 <br>
                                 <button class="btn btn-lg btn-success pull-right" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                                <!--<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>-->
+                                <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
                             </div>
                         </div>
                     </form>
@@ -246,6 +267,32 @@
 
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script>
+    //    $(document).ready(function () {
+    //         Activate tooltip
+    //        $('[data-toggle="tooltip"]').tooltip();
+
+    //     Select/Deselect checkboxes
+    //    var checkbox = $('table tbody input[type="checkbox"]');
+    //    $("#selectAll").click(function () {
+    //        if (this.checked) {
+    //        checkbox.each(function () {
+    //            this.checked = true;
+    //        });
+    //        }
+    //        else {
+    //        checkbox.each(function () {
+    //            this.checked = false;
+    //        });
+    //        }
+    //    });
+    //    checkbox.click(function () {
+    //        if (!this.checked) {
+    //        $("#selectAll").prop("checked", false);
+    //        }
+    //    });
+    //});
+                //Button
+                //Button
     $(document).ready(function () {
         $("input[type='radio']").click(function () {
             var radioValue = $("input[name='gioitinh']:checked").val();
