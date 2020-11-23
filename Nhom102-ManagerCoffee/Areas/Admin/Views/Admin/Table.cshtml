@@ -2,7 +2,8 @@
 @{
     ViewBag.Title = "Table";
 }
-
+<link href="~/Areas/Admin/assets/css/Admin.css" rel="stylesheet" />
+<script src="~/Areas/Admin/assets/js/js/ChartAdmin.js"></script>
 
 <div class="container">
     <div class="table-wrapper">
@@ -29,9 +30,9 @@
                             <span>Nhân Sự</span>
                         </button>
                         <ul class="dropdown-menu" style="margin-top: 37px; margin-left: 154px;">
-                            <li><a href="#Table-TaiKhoan">Tài Khoản</a></li>
-                            <li><a href="#Table-KhachHang">Khách Hàng</a></li>
-                            <li><a href="#">Nhân Viên</a></li>
+                            <li><a href="#Table-TaiKhoan" onclick="TaiKhoan_GetAll()">Tài Khoản</a></li>
+                            <li><a href="#Table-KhachHang" onclick="KhachHang_GetAll()">Khách Hàng</a></li>
+                            <li><a href="#NhanVien" onclick="NhanVien_GetAll()">Nhân Viên</a></li>
                         </ul>
                     </div>
                     <!--Dropdown button-SanPham-->
@@ -41,10 +42,10 @@
                             <span>Sản Phẩm</span>
                         </button>
                         <ul class="dropdown-menu" style=" margin-top: 37px; margin-left: 38px;">
-                            <li><a href="#Table-SanPham">Sản Phẩm</a></li>
-                            <li><a href="#Table-LoaiSP">Loại SP</a></li>
-                            <li><a href="#Table-Coupon">Coupon</a></li>
-                            <li><a href="#Table-HoaDon">Hóa Đơn</a></li>
+                            <li><a href="#Table-SanPham" onclick="SanPham_GetAll()">Sản Phẩm</a></li>
+                            <li><a href="#Table-LoaiSP" onclick="LoaiSanPham_GetAll()">Loại SP</a></li>
+                            <li><a href="#Table-Coupon" onclick="Coupon_GetAll()">Coupon</a></li>
+                            <li><a href="#Table-HoaDon" onclick="HoaDon_GetAll()">Hóa Đơn</a></li>
                         </ul>
                     </div>
                 </div>
@@ -52,377 +53,373 @@
             </div>
         </div>
 
-        <!-- Table Data -->
-        <!--SanPham-->
-        <table class="table table-striped table-hover" id="Table-SanPham">
-            <div style="width:800px;" id="Table-title">Sản Phẩm</div>
-            <thead>
-                <tr>
-                    <th>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="selectAll">
-                            <label for="selectAll"></label>
-                        </span>
-                    </th>
-                    <th>Mã SP</th>
-                    <th>Tên SP</th>
-                    <th>Mã Loại</th>
-                    <th>Hình Ảnh</th>
-                    <th>Giá Tiền</th>
-                    <th>Mô Tả</th>
-                    <th>Số Lượng</th>
-                </tr>
-            </thead>
-            <tbody>
+        <div id="load-table">
+            <!--SanPham-->
+            <table class="table table-striped table-hover" id="Table-SanPham">
+                <thead>
+                    <tr>
+                        <th>
+                            <span class="custom-checkbox">
+                                <input type="checkbox" id="selectAll">
+                                <label for="selectAll"></label>
+                            </span>
+                        </th>
+                        <th>Mã SP</th>
+                        <th>Tên SP</th>
+                        <th>Mã Loại</th>
+                        <th>Hình Ảnh</th>
+                        <th>Giá Tiền</th>
+                        <th>Mô Tả</th>
+                        <th>Số Lượng</th>
+                    </tr>
+                </thead>
+                <tbody id="sanpham-context">
 
-                <tr>
-                    <td>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="checkbox2" name="options[]" value="1">
-                            <label for="checkbox2"></label>
-                        </span>
-                    </td>
-                    <td>1</td>
-                    <td>Nước Coca</td>
-                    <td>NN</td>
-                    <td><img src="~/Areas/Admin/assets/img/Coca-Cola-Can-icon.png" class="image-products" /></td>
-                    <td>20,000</td>
-                    <td>...</td>
-                    <td>10</td>
-                    <td>
-                        <div id="CRUD-button">
-                            <a href="#Edit-SanPham" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                        </div>
-                    </td>
-                </tr>
+                    <tr>
+                        <td>
+                            <span class="custom-checkbox">
+                                <input type="checkbox" id="checkbox2" name="options[]" value="1">
+                                <label for="checkbox2"></label>
+                            </span>
+                        </td>
+                        <td>1</td>
+                        <td>Nước Coca</td>
+                        <td>NN</td>
+                        <td><img src="~/Areas/Admin/assets/img/Coca-Cola-Can-icon.png" class="image-products" /></td>
+                        <td>20,000</td>
+                        <td>...</td>
+                        <td>10</td>
+                        <td>
+                            <div id="CRUD-button">
+                                <a href="#Edit-SanPham" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                            </div>
+                        </td>
+                    </tr>
 
-            </tbody>
-        </table>
-        <!--LoaiSanpham-->
-        <table class="table table-striped table-hover" id="Table-LoaiSP">
-            <div style="width:800px;" id="Table-title">Loại Sản Phẩm</div>
-            <thead>
-                <tr>
-                    <th>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="selectAll">
-                            <label for="selectAll"></label>
-                        </span>
-                    </th>
-                    <th>Mã Loại</th>
-                    <th>Tên Loại SP</th>
-                    <th>Mô Tả</th>
-                    <th>Hình Ảnh</th>
-                    <th>Giá Bán Ra</th>
+                </tbody>
+            </table>
+            <!--LoaiSanpham-->
+            <table class="table table-striped table-hover" id="Table-LoaiSP">
+                <thead>
+                    <tr>
+                        <th>
+                            <span class="custom-checkbox">
+                                <input type="checkbox" id="selectAll">
+                                <label for="selectAll"></label>
+                            </span>
+                        </th>
+                        <th>Mã Loại</th>
+                        <th>Tên Loại SP</th>
+                        <th>Mô Tả</th>
+                        <th>Hình Ảnh</th>
 
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="checkbox2" name="options[]" value="1">
-                            <label for="checkbox2"></label>
-                        </span>
-                    </td>
-                    <td>NN</td>
-                    <td>Nước Ngọt</td>
-                    <td>...</td>
-                    <td>
-                        <div>
-                            <img src="~/Areas/Admin/assets/img/Coca-Cola-Can-icon.png" class="image-products" />
-                        </div>
-                    </td>
+                    </tr>
+                </thead>
+                <tbody id="loaisanpham-context">
+                    <tr>
+                        <td>
+                            <span class="custom-checkbox">
+                                <input type="checkbox" id="checkbox2" name="options[]" value="1">
+                                <label for="checkbox2"></label>
+                            </span>
+                        </td>
+                        <td>NN</td>
+                        <td>Nước Ngọt</td>
+                        <td>...</td>
+                        <td>
+                            <div>
+                                <img src="~/Areas/Admin/assets/img/Coca-Cola-Can-icon.png" class="image-products" />
+                            </div>
+                        </td>
+                        <td>
+                            <div id="CRUD-button">
+                                <a href="#Edit-LoaiSP" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--HoaDon-->
+            <table class="table table-striped table-hover" id="Table-HoaDon">
+                <thead>
+                    <tr>
+                        <th>
+                            <span class="custom-checkbox">
+                                <input type="checkbox" id="selectAll">
+                                <label for="selectAll"></label>
+                            </span>
+                        </th>
+                        <th>Mã HĐ</th>
+                        <th>Mã KH</th>
+                        <th>Mã SP</th>
+                        <!--<th>Mã Loại</th>-->
+                        <th>Thời Gian</th>
+                        <th>Tổng Giá</th>
+                        <th>Giảm Giá</th>
+                        <!--<th>Điểm Cộng</th>-->
+                        <th>Số Lượng</th>
+                        <th>Trạng Thái</th>
+                    </tr>
+                </thead>
+                <tbody id="hoadon-context">
 
-                    <td>20,000</td>
-                    <td>
-                        <div id="CRUD-button">
-                            <a href="#Edit-LoaiSP" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <!--HoaDon-->
-        <table class="table table-striped table-hover" id="Table-HoaDon">
-            <div style="width:800px;" id="Table-title">Hóa Đơn</div>
-            <thead>
-                <tr>
-                    <th>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="selectAll">
-                            <label for="selectAll"></label>
-                        </span>
-                    </th>
-                    <th>Mã HĐ</th>
-                    <th>Tên Khách Hàng</th>
-                    <th>Thời Gian </th>
-                    <th>Điểm Cộng</th>
-                    <th>Số Lượng</th>
-                    <th>Giảm Giá</th>
-                    <th>Tổng Giá</th>
-                    <th>Trạng Thái</th>
-                </tr>
-            </thead>
-            <tbody>
+                    <tr>
+                        <td>
+                            <span class="custom-checkbox">
+                                <input type="checkbox" id="checkbox2" name="options[]" value="1">
+                                <label for="checkbox2"></label>
+                            </span>
+                        </td>
+                        <td>HD01</td>
+                        <td>Nguyễn Văn A</td>
+                        <td>15-11-2020</td>
+                        <td>5</td>
+                        <td>1</td>
+                        <td>10%</td>
+                        <td>15,000</td>
+                        <td>Đã Thanh Toán</td>
+                        <td>
+                            <div id="CRUD-button">
+                                <a href="#Edit-HoaDon" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                            </div>
+                        </td>
+                    </tr>
 
-                <tr>
-                    <td>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="checkbox2" name="options[]" value="1">
-                            <label for="checkbox2"></label>
-                        </span>
-                    </td>
-                    <td>HD01</td>
-                    <td>Nguyễn Văn A</td>
-                    <td>15-11-2020</td>
-                    <td>5</td>
-                    <td>1</td>
-                    <td>10%</td>
-                    <td>15,000</td>
-                    <td>Đã Thanh Toán</td>
-                    <td>
-                        <div id="CRUD-button">
-                            <a href="#Edit-HoaDon" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                        </div>
-                    </td>
-                </tr>
+                </tbody>
+            </table>
+            <!--Coupon-->
+            <table class="table table-striped table-hover" id="Table-Coupon">
+                <thead>
+                    <tr>
+                        <th>
+                            <span class="custom-checkbox">
+                                <input type="checkbox" id="selectAll">
+                                <label for="selectAll"></label>
+                            </span>
+                        </th>
+                        <th>Mã CP</th>
+                        <th>Tên Coupon</th>
+                        <th>Thời Gian Tồn Tại</th>
+                        <th>Ngày Bắt Đầu</th>
+                        <th>Ngày Kết Thúc</th>
+                        <th>Giá Trị Giảm Tối Đa</th>
+                        <th>Trạng Thái</th>
+                    </tr>
+                </thead>
+                <tbody id="coupon-context">
 
-            </tbody>
-        </table>
-        <!--Coupon-->
-        <table class="table table-striped table-hover" id="Table-Coupon">
-            <div style="width:800px;" id="Table-title">Coupon</div>
-            <thead>
-                <tr>
-                    <th>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="selectAll">
-                            <label for="selectAll"></label>
-                        </span>
-                    </th>
-                    <th>Mã CP</th>
-                    <th>Tên Coupon</th>
-                    <th>Thời Gian Tồn Tại</th>
-                    <th>Ngày Bắt Đầu</th>
-                    <th>Ngày Kết Thúc</th>
-                    <th>Giá Trị Giảm</th>
-                    <th>Giá Trị Giảm Tối Đa</th>
-                    <th>Trạng Thái</th>
-                    <th>Tình Trạng</th>
-                </tr>
-            </thead>
-            <tbody>
+                    <tr>
+                        <td>
+                            <span class="custom-checkbox">
+                                <input type="checkbox" id="checkbox2" name="options[]" value="1">
+                                <label for="checkbox2"></label>
+                            </span>
+                        </td>
+                        <td>CP01</td>
+                        <td>BF_NEWS</td>
+                        <td>2 Ngày</td>
+                        <td>11-11-2020</td>
+                        <td>13-11-2020</td>
+                        <td>50%</td>
+                        <td>500,000đ</td>
+                        <td>Đã Kích Hoạt</td>
+                        <td>Chưa Sử Dụng</td>
+                        <td>
+                            <div id="CRUD-button">
+                                <a href="#Edit-Coupon" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                            </div>
+                        </td>
+                    </tr>
 
-                <tr>
-                    <td>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="checkbox2" name="options[]" value="1">
-                            <label for="checkbox2"></label>
-                        </span>
-                    </td>
-                    <td>CP01</td>
-                    <td>BF_NEWS</td>
-                    <td>2 Ngày</td>
-                    <td>11-11-2020</td>
-                    <td>13-11-2020</td>
-                    <td>50%</td>
-                    <td>500,000đ</td>
-                    <td>Đã Kích Hoạt</td>
-                    <td>Chưa Sử Dụng</td>
-                    <td>
-                        <div id="CRUD-button">
-                            <a href="#Edit-Coupon" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                        </div>
-                    </td>
-                </tr>
+                </tbody>
+            </table>
+            <!--TaiKhoan-->
+            <table class="table table-striped table-hover" id="Table-TaiKhoan">
+                <thead>
+                    <tr>
+                        <th>
+                            <span class="custom-checkbox">
+                                <input type="checkbox" id="selectAll">
+                                <label for="selectAll"></label>
+                            </span>
+                        </th>
+                        <th>Mã TK</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Loại Tài Khoản</th>
+                    </tr>
+                </thead>
+                <tbody id="taikhoan-context">
 
-            </tbody>
-        </table>
-        <!--TaiKhoan-->
-        <table class="table table-striped table-hover" id="Table-TaiKhoan">
-            <div style="width:800px;" id="Table-title">Tài Khoản</div>
-            <thead>
-                <tr>
-                    <th>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="selectAll">
-                            <label for="selectAll"></label>
-                        </span>
-                    </th>
-                    <th>Mã TK</th>
-                    <th>Mã NV</th>
-                    <th>Username</th>
-                    <th>Password</th>
-                    <th>Loại Tài Khoản</th>
-                </tr>
-            </thead>
-            <tbody>
+                    <tr>
+                        <td>
+                            <span class="custom-checkbox">
+                                <input type="checkbox" id="checkbox2" name="options[]" value="1">
+                                <label for="checkbox2"></label>
+                            </span>
+                        </td>
+                        <td>AD</td>
+                        <td>NV01</td>
+                        <td>tien</td>
+                        <td>
+                            <span>***</span>
+                        </td>
+                        <td>Admin</td>
+                        <td>
+                            <div id="CRUD-button">
+                                <a href="#" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Hide" style="color: #00fff3;">&#xe8f5;</i></a>
+                                <a href="#" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Show" style="color: #ff8100;">&#xe8f4;</i></a>
+                                <a href="#Edit-TaiKhoan" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                            </div>
+                        </td>
+                    </tr>
 
-                <tr>
-                    <td>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="checkbox2" name="options[]" value="1">
-                            <label for="checkbox2"></label>
-                        </span>
-                    </td>
-                    <td>AD</td>
-                    <td>NV01</td>
-                    <td>tien</td>
-                    <td>
-                        <span>***</span>
-                    </td>
-                    <td>Admin</td>
-                    <td>
-                        <div id="CRUD-button">
-                            <a href="#" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Hide" style="color: #00fff3;">&#xe8f5;</i></a>
-                            <a href="#" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Show" style="color: #ff8100;">&#xe8f4;</i></a>
-                            <a href="#Edit-TaiKhoan" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                        </div>
-                    </td>
-                </tr>
+                </tbody>
+            </table>
+            <!--KhachHang-->
+            <table class="table table-striped table-hover" id="Table-KhachHang">
+                <thead>
+                    <tr>
+                        <th>
+                            <span class="custom-checkbox">
+                                <input type="checkbox" id="selectAll">
+                                <label for="selectAll"></label>
+                            </span>
+                        </th>
+                        <th>Mã KH</th>
+                        <th>Họ Tên</th>
+                        <th>Ngày Sinh</th>
+                        <th>Giới Tính</th>
+                        <th>Địa Chỉ</th>
+                        <th>SĐT</th>
+                        <th>Điểm</th>
+                    </tr>
+                </thead>
+                <tbody id="khachhang-context">
 
-            </tbody>
-        </table>
-        <!--KhachHang-->
-        <table class="table table-striped table-hover" id="Table-KhachHang">
-            <div style="width:800px;" id="Table-title">Khách Hàng</div>
-            <thead>
-                <tr>
-                    <th>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="selectAll">
-                            <label for="selectAll"></label>
-                        </span>
-                    </th>
-                    <th>Mã KH</th>
-                    <th>Họ Tên</th>
-                    <th>Ngày Sinh</th>
-                    <th>Giới Tính</th>
-                    <th>Địa Chỉ</th>
-                    <th>SĐT</th>
-                    <th>Điểm</th>
-                </tr>
-            </thead>
-            <tbody>
+                    <tr>
+                        <td>
+                            <span class="custom-checkbox">
+                                <input type="checkbox" id="checkbox2" name="options[]" value="1">
+                                <label for="checkbox2"></label>
+                            </span>
+                        </td>
+                        <td>KH01</td>
+                        <td>Nguyễn Văn A</td>
+                        <td>15-11-2020</td>
+                        <td>Nam</td>
+                        <td>486, Lê Hồng Phong, Quận 10, TP.HCM</td>
+                        <td>0935720104</td>
+                        <td>150</td>
+                        <td>
+                            <div id="CRUD-button">
+                                <a href="#Edit-KhachHang" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--NhanVien-->
+            <table class="table table-striped table-hover" id="Table-NhanVien">
+                <thead>
+                    <tr>
+                        <th>
+                            <span class="custom-checkbox">
+                                <input type="checkbox" id="selectAll">
+                                <label for="selectAll"></label>
+                            </span>
+                        </th>
+                        <th>Mã NV</th>
+                        <th>Loại TK</th>
+                        <th>Ca Làm Việc</th>
+                        <th>Họ Tên</th>
+                        <th>Giới Tính</th>
+                        <th>Địa Chỉ</th>
+                        <th>SĐT</th>
+                        <th>Tổng Giờ Làm</th>
+                        <th>Tổng Tiền</th>
+                    </tr>
+                </thead>
+                <tbody id="nhanvien-context">
 
-                <tr>
-                    <td>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="checkbox2" name="options[]" value="1">
-                            <label for="checkbox2"></label>
-                        </span>
-                    </td>
-                    <td>KH01</td>
-                    <td>Nguyễn Văn A</td>
-                    <td>15-11-2020</td>
-                    <td>Nam</td>
-                    <td>486, Lê Hồng Phong, Quận 10, TP.HCM</td>
-                    <td>0935720104</td>
-                    <td>150</td>
-                    <td>
-                        <div id="CRUD-button">
-                            <a href="#Edit-KhachHang" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <!--NhanVien-->
-        <table class="table table-striped table-hover" id="Table-NhanVien">
-            <div style="width:800px;" id="Table-title">Nhân Viên</div>
-            <thead>
-                <tr>
-                    <th>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="selectAll">
-                            <label for="selectAll"></label>
-                        </span>
-                    </th>
-                    <th>Mã NV</th>
-                    <th>Ca Làm Việc</th>
-                    <th>Họ Tên</th>
-                    <th>Giới Tính</th>
-                    <th>Địa Chỉ</th>
-                    <th>SĐT</th>
-                    <th>Tổng Giờ Làm</th>
-                    <th>Tổng Tiền</th>
-                </tr>
-            </thead>
-            <tbody>
+                    <tr>
+                        <td>
+                            <span class="custom-checkbox">
+                                <input type="checkbox" id="checkbox2" name="options[]" value="1">
+                                <label for="checkbox2"></label>
+                            </span>
+                        </td>
+                        <td>NV01</td>
+                        <td>Ca Sáng</td>
+                        <td>Trần Tấn Đạt</td>
+                        <td>Nam</td>
+                        <td>486, Lê Hồng Phong, Quận 10, TP.HCM</td>
+                        <td>0988787767</td>
+                        <td>300H</td>
+                        <td>3,500,000</td>
+                        <td>
+                            <div id="CRUD-button">
+                                <a href="#Edit-NhanVien" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--LichSu-->
+            <table class="table table-striped table-hover" id="Table-LichSu">
+                <thead>
+                    <tr>
+                        <th>
+                            <span class="custom-checkbox">
+                                <input type="checkbox" id="selectAll">
+                                <label for="selectAll"></label>
+                            </span>
+                        </th>
+                        <th>STT</th>
+                        <th>Công Việc</th>
+                        <th>Ngày Thực Hiện</th>
+                        <th>Hoạt Động</th>
+                        <th>Người Thực Hiện</th>
+                    </tr>
+                </thead>
+                <tbody id="lichsu-context">
+                    <tr>
+                        <td>
+                            <span class="custom-checkbox">
+                                <input type="checkbox" id="checkbox2" name="options[]" value="1">
+                                <label for="checkbox2"></label>
+                            </span>
+                        </td>
+                        <td>1</td>
+                        <td>Trà Sữa</td>
+                        <td>11-12-2020</td>
+                        <td>Thêm Mới</td>
+                        <td>Trần Tấn Đạt</td>
+                        <td>
+                            <div id="CRUD-button">
+                                <a href="#Edit-LichSu" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
 
-                <tr>
-                    <td>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="checkbox2" name="options[]" value="1">
-                            <label for="checkbox2"></label>
-                        </span>
-                    </td>
-                    <td>NV01</td>
-                    <td>Ca Sáng</td>
-                    <td>Trần Tấn Đạt</td>
-                    <td>Nam</td>
-                    <td>486, Lê Hồng Phong, Quận 10, TP.HCM</td>
-                    <td>0988787767</td>
-                    <td>300H</td>
-                    <td>3,500,000</td>
-                    <td>
-                        <div id="CRUD-button">
-                            <a href="#Edit-NhanVien" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <!--LichSu-->
-        <table class="table table-striped table-hover" id="Table-LichSu">
-            <div style="width:800px;" id="Table-title">Lịch Sử</div>
-            <thead>
-                <tr>
-                    <th>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="selectAll">
-                            <label for="selectAll"></label>
-                        </span>
-                    </th>
-                    <th>STT</th>
-                    <th>Công Việc</th>
-                    <th>Ngày Thực Hiện</th>
-                    <th>Hoạt Động</th>
-                    <th>Người Thực Hiện</th>
-                </tr>
-            </thead>
-            <tbody>
-
-                <tr>
-                    <td>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="checkbox2" name="options[]" value="1">
-                            <label for="checkbox2"></label>
-                        </span>
-                    </td>
-                    <td>1</td>
-                    <td>Trà Sữa</td>
-                    <td>11-12-2020</td>
-                    <td>Thêm Mới</td>
-                    <td>Trần Tấn Đạt</td>
-                    <td>
-                        <div id="CRUD-button">
-                            <a href="#Edit-LichSu" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        
+        
+        
         <!--Table Data-->
+
+        <br /><hr /><br />
         <!--Chart-Statistic-->
         <table class="table table-striped table-hover" id="Table-Chart">
             <div style="width:800px;" id="Table-title">Thống Kê</div>
@@ -819,7 +816,6 @@
     </div>
 </div>
 <!-- /Modal-Add New -->
-
 <!-- Edit Modal HTML -->
 <!-- Edit-Modal SanPham-->
 <div class="modal fade" id="Edit-SanPham" role="dialog">
@@ -1137,7 +1133,7 @@
                     <div class="form-group">
                         <label>Người Thực Hiện</label>
                         <input type="text" class="form-control" required>
-                    </div>  
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy Bỏ">
@@ -1249,6 +1245,5 @@
             }
         });
     });
-                //Button
-                //Button
 </script>
+<script src="~/Areas/Admin/assets/js/Table-Xuly.js"></script>

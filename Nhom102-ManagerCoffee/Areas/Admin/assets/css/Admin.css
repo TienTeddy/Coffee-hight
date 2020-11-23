@@ -241,6 +241,7 @@ table.table .avatar {
 
 .modal .modal-content {
     border-radius: 1px;
+    width:100%;
 }
 
 .modal .modal-footer {
