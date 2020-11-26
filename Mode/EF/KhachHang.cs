@@ -1,4 +1,4 @@
-namespace Mode
+namespace Mode.EF
 {
     using System;
     using System.Collections.Generic;
@@ -12,8 +12,8 @@ namespace Mode
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public KhachHang()
         {
+            Coupons = new HashSet<Coupon>();
             HoaDons = new HashSet<HoaDon>();
-            HoaDonCTs = new HashSet<HoaDonCT>();
         }
 
         [Key]
@@ -35,10 +35,10 @@ namespace Mode
         public double? diem { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HoaDon> HoaDons { get; set; }
+        public virtual ICollection<Coupon> Coupons { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HoaDonCT> HoaDonCTs { get; set; }
+        public virtual ICollection<HoaDon> HoaDons { get; set; }
 
         public virtual TaiKhoan TaiKhoan { get; set; }
     }

@@ -150,3 +150,35 @@ function changeMoney(idsp) {
 
     $('#sum_gia').html("Tổng:&nbsp;" + sum.toLocaleString('vi', { style: 'currency', currency: 'VND' }));
 }
+
+function dathang() {
+    var things = [
+        { id: 1, color: 'yellow' },
+        { id: 2, color: 'blue' },
+        { id: 3, color: 'red' }
+    ];
+
+    objectHoaDon = JSON.stringify({ 'data': value_cart });
+    $.ajax({
+        url: "DatHang",
+        type: "POST",
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        data: objectHoaDon,
+        success: function (result) {
+            if (result === 1) {
+                window.location.replace('../TaiKhoan/Infor');
+            }
+            /*else if (result === -1) {
+                alert("Error Order!");
+            }
+            else {
+                alert("Bạn chưa chọn sản phẩm.");
+            }
+            */
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+}

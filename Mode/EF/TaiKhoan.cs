@@ -1,4 +1,4 @@
-namespace Mode
+namespace Mode.EF
 {
     using System;
     using System.Collections.Generic;
@@ -24,7 +24,7 @@ namespace Mode
 
         [Column("taikhoan")]
         [StringLength(50)]
-        public string taikhoan1 { get; set; }
+        public string Taikhoan { get; set; }
 
         [StringLength(50)]
         public string matkhau { get; set; }

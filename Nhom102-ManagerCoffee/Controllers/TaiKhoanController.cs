@@ -10,6 +10,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Web.Script.Serialization;
 
 namespace Nhom102_ManagerCoffee.Controllers
 {
@@ -24,6 +25,30 @@ namespace Nhom102_ManagerCoffee.Controllers
                 return RedirectToAction("Index", "Home", new { area = "" });
             }
             return View();
+        }
+
+        [HttpGet]
+        public JsonResult SetTaiKhoan(string hoten, string diachi, string email, string matkhau)
+        {
+
+            var session_acc = SessionHelper.GetSession();
+            if (session_acc != null)
+            {
+                var kh = new KhachHangDAO();
+                var result = kh.SetKhachHang(session_acc.id_khachhang, hoten, diachi, email, matkhau); //id_taikhoan
+
+                var dao = new KhachHangDAO();
+                var result1 = dao.GetKhachHangs(session_acc.id_khachhang);
+
+                SessionHelper.SetSession(new AccLogin() { TaiKhoan1 = result.Taikhoan, MatKhau = result.matkhau, id_khachhang = result1.id_khachhang, hoten = hoten, diachi = diachi});
+
+
+                var da = new KhachHangDAO();
+                var res = da.GetKhachHang_ListOner(session_acc.id_khachhang);
+
+                return Json(res, JsonRequestBehavior.AllowGet);
+            }
+            return Json(null, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -50,6 +75,11 @@ namespace Nhom102_ManagerCoffee.Controllers
             }
             else if (result == 11) //customer
             {
+                var daotk = new TaiKhoanDAO();
+                var resulttk = daotk.GetTaiKhoan(taikhoan.taikhoan1);
+
+                var daokh = new KhachHangDAO();
+                var resultkh = daokh.GetKhachHang(resulttk.id_taikhoan);
                 // add session
                 if (taikhoan.checkbox == true)
                 {
@@ -61,7 +91,20 @@ namespace Nhom102_ManagerCoffee.Controllers
                     Response.AppendCookie(newCookie);
                 }
                 ViewBag.Message = "true";
-                SessionHelper.SetSession(new AccLogin() { TaiKhoan1 = taikhoan.taikhoan1, MatKhau = taikhoan.matkhau });
+
+                if (resultkh != null)
+                {
+                    SessionHelper.SetSession(new AccLogin() { TaiKhoan1 = taikhoan.taikhoan1, MatKhau = taikhoan.matkhau, id_khachhang = resultkh.id_khachhang,id_taikhoan= resulttk.id_taikhoan, hoten = resultkh.hoten, diachi = resultkh.diachi, sdt = resultkh.sdt });
+
+                }
+                else
+                {
+                    SessionHelper.SetSession(new AccLogin()
+                    {
+                        TaiKhoan1 = taikhoan.taikhoan1,
+                        MatKhau = taikhoan.matkhau
+                    });
+                }
                 return RedirectToAction("Index", "Home");
             }
             else if (result == 0 || result == -1) //fail login
@@ -83,6 +126,8 @@ namespace Nhom102_ManagerCoffee.Controllers
         {
             return View();
         }
+
+        [HttpGet]
         public JsonResult GetInfor()
         {
             var session_acc = SessionHelper.GetSession();
@@ -100,13 +145,15 @@ namespace Nhom102_ManagerCoffee.Controllers
             else { return null; }
         }
 
+        [HttpGet]
         public JsonResult GetInfor_TaiKhoan()
         {
             var session_acc = SessionHelper.GetSession();
             if (session_acc != null)
             {
                 var daotk = new TaiKhoanDAO();
-                var resulttk = daotk.GetTaiKhoan_user(session_acc.TaiKhoan1, session_acc.MatKhau);
+                var resulttk = daotk.GetTaiKhoan_userList(session_acc.TaiKhoan1, session_acc.MatKhau);
+
                 return Json(resulttk, JsonRequestBehavior.AllowGet);
             }
             else { return null; }
@@ -191,7 +238,7 @@ namespace Nhom102_ManagerCoffee.Controllers
             if (result_tk == 2)
             {
                 var result2 = dao.GetTaiKhoan(email);
-                SessionHelper.SetSession(new AccLogin() { TaiKhoan1 = result2.taikhoan1, MatKhau=result2.matkhau });
+                SessionHelper.SetSession(new AccLogin() { TaiKhoan1 = result2.Taikhoan, MatKhau=result2.matkhau });
                 return View("Index");
             }
             else
@@ -219,7 +266,7 @@ namespace Nhom102_ManagerCoffee.Controllers
             if (result_tk == 2)
             {
                 var result2 = dao.GetTaiKhoan(email);
-                SessionHelper.SetSession(new AccLogin() { TaiKhoan1 = result2.taikhoan1, MatKhau = result2.matkhau });
+                SessionHelper.SetSession(new AccLogin() { TaiKhoan1 = result2.Taikhoan, MatKhau = result2.matkhau });
                 return View("Index");
             }
             else

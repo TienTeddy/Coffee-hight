@@ -1,4 +1,4 @@
-namespace Mode
+namespace Mode.EF
 {
     using System;
     using System.Data.Entity;
@@ -13,6 +13,7 @@ namespace Mode
         }
 
         public virtual DbSet<CaLamViec> CaLamViecs { get; set; }
+        public virtual DbSet<Coupon> Coupons { get; set; }
         public virtual DbSet<dbo_Table> dbo_Table { get; set; }
         public virtual DbSet<History> Histories { get; set; }
         public virtual DbSet<HoaDon> HoaDons { get; set; }
@@ -22,12 +23,21 @@ namespace Mode
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<OutBill> OutBills { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TableCT> TableCTs { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
         public virtual DbSet<ThongKe> ThongKes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Coupon>()
+                .Property(e => e.discount)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<HoaDon>()
+                .Property(e => e.thoigian)
+                .IsUnicode(false);
+
             modelBuilder.Entity<LoaiSanPham>()
                 .Property(e => e.hinhanh)
                 .IsUnicode(false);

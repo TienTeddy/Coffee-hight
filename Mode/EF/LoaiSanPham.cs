@@ -1,4 +1,4 @@
-namespace Mode
+namespace Mode.EF
 {
     using System;
     using System.Collections.Generic;
@@ -12,7 +12,6 @@ namespace Mode
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public LoaiSanPham()
         {
-            HoaDons = new HashSet<HoaDon>();
             HoaDonCTs = new HashSet<HoaDonCT>();
             SanPhams = new HashSet<SanPham>();
         }
@@ -27,9 +26,6 @@ namespace Mode
         public string mota { get; set; }
 
         public string hinhanh { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HoaDon> HoaDons { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HoaDonCT> HoaDonCTs { get; set; }

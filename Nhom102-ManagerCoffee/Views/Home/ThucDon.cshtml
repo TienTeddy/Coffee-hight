@@ -1,4 +1,4 @@
-﻿@model List<Mode.SanPham>
+﻿@model List<Mode.EF.SanPham>
 @{
     ViewBag.Title = "ThucDon";
 }
@@ -141,7 +141,7 @@
             <h2 class="text-align right"><strong id="sum_gia">Tổng: &nbsp;</strong></h2>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                <button type="button" class="btn btn-primary">Đặt Hàng</button>
+                <button type="button" onclick="dathang()" class="btn btn-primary">Đặt Hàng</button>
             </div>
         </div>
     </div>

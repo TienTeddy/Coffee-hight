@@ -57,14 +57,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\CouponDAO.cs" />
+    <Compile Include="DAO\HoaDonCTDAO.cs" />
+    <Compile Include="DAO\HoaDonDAO.cs" />
     <Compile Include="DAO\KhachHangDAO.cs" />
+    <Compile Include="DAO\LichSuDAO.cs" />
     <Compile Include="DAO\LoaiSanPhamDAO.cs" />
+    <Compile Include="DAO\NhanVienDAO.cs" />
     <Compile Include="DAO\SanPhamDAO.cs" />
     <Compile Include="DAO\TableCTDAO.cs" />
     <Compile Include="DAO\TableDAO.cs" />
     <Compile Include="DAO\TaiKhoanDAO.cs" />
     <Compile Include="EF\CaLamViec.cs" />
     <Compile Include="EF\Context_.cs" />
+    <Compile Include="EF\Coupon.cs" />
     <Compile Include="EF\dbo_Table.cs" />
     <Compile Include="EF\History.cs" />
     <Compile Include="EF\HoaDon.cs" />
@@ -73,12 +79,15 @@
     <Compile Include="EF\LoaiSanPham.cs" />
     <Compile Include="EF\NhanVien.cs" />
     <Compile Include="EF\OutBill.cs" />
-    <Compile Include="Models\TaiKhoan_KhachHang.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EF\SanPham.cs" />
+    <Compile Include="EF\sysdiagram.cs" />
     <Compile Include="EF\TableCT.cs" />
     <Compile Include="EF\TaiKhoan.cs" />
     <Compile Include="EF\ThongKe.cs" />
+    <Compile Include="Models\Coupon_Model.cs" />
+    <Compile Include="Models\HoaDonCT_Model.cs" />
+    <Compile Include="Models\TaiKhoan_KhachHang.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

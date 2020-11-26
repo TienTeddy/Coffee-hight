@@ -1,4 +1,4 @@
-namespace Mode
+namespace Mode.EF
 {
     using System;
     using System.Collections.Generic;
@@ -14,19 +14,19 @@ namespace Mode
 
         public int? id_hoadon { get; set; }
 
+        public int? id_khachhang { get; set; }
+
         public int? id_sanpham { get; set; }
 
         public int? id_loai { get; set; }
-
-        public int? id_khachhang { get; set; }
 
         public int? soluong { get; set; }
 
         public int? discount { get; set; }
 
-        public virtual HoaDon HoaDon { get; set; }
+        public double? dongia { get; set; }
 
-        public virtual KhachHang KhachHang { get; set; }
+        public virtual HoaDon HoaDon { get; set; }
 
         public virtual LoaiSanPham LoaiSanPham { get; set; }
 

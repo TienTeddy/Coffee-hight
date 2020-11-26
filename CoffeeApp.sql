@@ -61,9 +61,7 @@ go
 create table dbo.HoaDon(
 	id_hoadon int identity primary key,
 	id_khachhang int,
-	id_sanpham int,
-	id_loai int,
-	thoigian datetime,
+	thoigian varchar(50),
 	tonggia float,
 	discount int,
 	diemcong float,
@@ -77,9 +75,9 @@ create table dbo.HoaDonCT(
 	id_hoadon int,
 	id_sanpham int,
 	id_loai int,
-	id_khachhang int,
 	soluong int,
-	discount int default 0
+	discount int default 0,
+	dongia float
 )
 go
 create table dbo.OutBill(
@@ -161,12 +159,6 @@ ADD CONSTRAINT FK_SanPham_LoaiSanPham
 FOREIGN KEY (id_loai) REFERENCES dbo.LoaiSanPham(id_loai) ON DELETE SET NULL
 
 ALTER TABLE dbo.HoaDon
-ADD CONSTRAINT FK_HoaDon_LoaiSanPham
-FOREIGN KEY (id_loai) REFERENCES dbo.LoaiSanPham(id_loai) ON DELETE SET NULL
-ALTER TABLE dbo.HoaDon
-ADD CONSTRAINT FK_HoaDon_SanPham
-FOREIGN KEY (id_sanpham) REFERENCES dbo.SanPham(id_sanpham) ON DELETE SET NULL
-ALTER TABLE dbo.HoaDon
 ADD CONSTRAINT FK_HoaDon_KhachHang
 FOREIGN KEY (id_khachhang) REFERENCES dbo.KhachHang(id_khachhang) ON DELETE SET NULL
 
@@ -177,9 +169,39 @@ ALTER TABLE dbo.HoaDonCT
 ADD CONSTRAINT FK_HoaDonCT_SanPham
 FOREIGN KEY (id_sanpham) REFERENCES dbo.SanPham(id_sanpham) ON DELETE SET NULL
 ALTER TABLE dbo.HoaDonCT
-ADD CONSTRAINT FK_HoaDonCT_KhachHang
-FOREIGN KEY (id_khachhang) REFERENCES dbo.KhachHang(id_khachhang) ON DELETE SET NULL
-ALTER TABLE dbo.HoaDonCT
 ADD CONSTRAINT FK_HoaDonCT_LoaiSanPham
 FOREIGN KEY (id_loai) REFERENCES dbo.LoaiSanPham(id_loai) ON DELETE SET NULL
 
+create table dbo.Coupon(
+	id_coupon int identity primary key,
+	id_khachhang int,
+	tencoupon nvarchar(150),
+	lifetime varchar(10),
+	thestart varchar(20),
+	theend varchar(20),
+	discount varchar(10),
+	status nvarchar(50) check(status in(N'Chưa Sử Dụng',N'Đã Sử Dụng',N'Đã Hết Hạn')) default N'Chưa Sử Dụng',
+	Ma_Coupon varchar(50)
+)
+
+ALTER TABLE dbo.Coupon
+ADD CONSTRAINT FK_Coupon_KhachHang
+FOREIGN KEY (id_khachhang) REFERENCES dbo.KhachHang(id_khachhang) ON DELETE SET NULL
+go
+
+alter trigger trg_RamdomCoupon on dbo.Coupon after insert
+as declare @ramdom varchar(50)
+begin
+	set @ramdom = ''
+	SELECT @ramdom = SUBSTRING(CONVERT(varchar(50), NEWID()),0,9)
+
+	if(@ramdom!='')
+		begin 
+			update dbo.Coupon set Ma_Coupon= @ramdom
+			where id_coupon = (select id_coupon from inserted)
+		end
+end
+go
+
+select *from dbo.Coupon
+select *from dbo.TaiKhoan

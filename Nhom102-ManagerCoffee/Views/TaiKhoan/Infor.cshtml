@@ -40,7 +40,7 @@
         <div class="col-sm-9">
             <ul class="nav nav-tabs" style="margin-top:10%">
                 <li class="active"><a data-toggle="tab" href="#home">Tài Khoản</a></li>
-                <li><a data-toggle="tab" href="#cart">Đơn Hàng</a></li>
+                <li><a data-toggle="tab" href="#cart" onclick="HoaDonCT()">Đơn Hàng</a></li>
                 <li><a data-toggle="tab" href="#settings">Khuyến Mãi</a></li>
             </ul>
             <div class="tab-content" style="margin-top:10%">
@@ -65,21 +65,21 @@
 
                             <div class="col-xs-6">
                                 <label for="email"><h4>Email</h4></label>
-                                <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
+                                <input type="text" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
                             </div>
                         </div>
                         <div class="form-group">
 
                             <div class="col-xs-6">
-                                <label for="email"><h4>Địa Chỉ</h4></label>
-                                <input type="email" class="form-control" id="diachi" placeholder="somewhere" title="enter a location">
+                                <label for="address"><h4>Địa Chỉ</h4></label>
+                                <input type="text" class="form-control" id="diachi" placeholder="somewhere" title="enter a location">
                             </div>
                         </div>
                         <div class="form-group">
 
                             <div class="col-xs-6">
                                 <label for="username"><h4>Tài Khoản</h4></label>
-                                <input type="text" class="form-control" name="text" id="taikhoan" placeholder="username" title="enter your username.">
+                                <input type="text" class="form-control" name="text" id="taikhoan" placeholder="username" title="enter your username." readonly>
                             </div>
                         </div>
                         <div class="form-group">
@@ -92,8 +92,8 @@
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <br>
-                                <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                                <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+                                <button class="btn btn-lg btn-success"  onclick="SetTaiKhoan()"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                                <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> iReset</button>
                             </div>
                         </div>
                     </form>
@@ -117,76 +117,36 @@
                     </div>
                 </div>
 
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-1"><img src="https://bootdey.com/img/content/user_3.jpg" class="media-object img-thumbnail" /></div>
-                        <div class="col-md-11">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="pull-right"><label class="label label-danger">rejected</label></div>
-                                    <span><strong>order name</strong></span> <span class="label label-info">group name</span><br />
-                                    quantity : 2, cost: $323.13 <br />
-                                    <a data-placement="top" class="btn btn-success btn-xs glyphicon glyphicon-ok" href="#" title="view"></a>
-                                    <a data-placement="top" class="btn btn-danger btn-xs glyphicon glyphicon-trash" href="#" title="danger"></a>
-                                    <a data-placement="top" class="btn btn-info btn-xs glyphicon glyphicon-usd" href="#" title="danger"></a>
+                <div id="load-hoadon">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-1"><img src="~/Areas/Admin/assets/img/avt-nam.jpg" class="media-object img-thumbnail" /></div>
+                            <div class="col-md-11">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="pull-right"><label class="label label-danger">rejected</label></div>
+                                        <span><strong>order <p id="hoadon-id_donhang"></p></strong></span> <span class="label label-info">group name</span><br />
+                                        quantity : <p id="hoadon-soluong">2</p>,  cost: <p id="hoadon-dongia">323.13</p>VNĐ <br />
+                                        <a data-placement="top" class="btn btn-success btn-xs glyphicon glyphicon-ok" href="#" title="view"></a>
+                                        <a data-placement="top" class="btn btn-danger btn-xs glyphicon glyphicon-trash" href="#" title="danger"></a>
+                                        <!--<a data-placement="top" class="btn btn-info btn-xs glyphicon glyphicon-usd" href="#" title="danger"></a>-->
+                                    </div>
+                                    <div class="col-md-12">order made on: <p id="hoadon-thoigian"></p> by <a href="#">@ViewBag.taikhoan </a></div>
                                 </div>
-                                <div class="col-md-12">order made on: 05/31/2014 by <a href="#">jane doe </a></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-1"><img src="https://bootdey.com/img/content/user_1.jpg" class="media-object img-thumbnail" /></div>
-                        <div class="col-md-11">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="pull-right"><label class="label label-info">pending</label></div>
-                                    <span><strong>order name</strong></span> <span class="label label-info">group name</span><br />
-                                    quantity : 12, cost: $12623.13<br />
-                                    <a data-placement="top" class="btn btn-success btn-xs glyphicon glyphicon-ok" href="#" title="view"></a>
-                                    <a data-placement="top" class="btn btn-danger btn-xs glyphicon glyphicon-trash" href="#" title="danger"></a>
-                                    <a data-placement="top" class="btn btn-info btn-xs glyphicon glyphicon-usd" href="#" title="danger"></a>
-                                </div>
-                                <div class="col-md-12">order made on: 06/12/2014 by <a href="#">jane doe </a></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-1"><img src="https://bootdey.com/img/content/user_3.jpg" class="media-object img-thumbnail" /></div>
-                        <div class="col-md-11">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="pull-right"><label class="label label-success">approved</label></div>
-                                    <span><strong>order name</strong></span> <span class="label label-info">group name</span><br />
-                                    quantity : 4, cost: $523.13<br />
-                                    <a data-placement="top" class="btn btn-success btn-xs glyphicon glyphicon-ok" href="#" title="view"></a>
-                                    <a data-placement="top" class="btn btn-danger btn-xs glyphicon glyphicon-trash" href="#" title="danger"></a>
-                                    <a data-placement="top" class="btn btn-info btn-xs glyphicon glyphicon-usd" href="#" title="danger"></a>
-                                </div>
-                                <div class="col-md-12">order made on: 06/20/2014 by <a href="#">jane doe</a></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-1"><img src="https://bootdey.com/img/content/user_2.jpg" class="media-object img-thumbnail" /></div>
-                        <div class="col-md-11">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="pull-right"><label class="label label-info">pending</label></div>
-                                    <span><strong>order name</strong></span> <span class="label label-info">group name</span><br />
-                                    quantity : 4, cost: $523.13<br />
-                                    <a data-placement="top" class="btn btn-success btn-xs glyphicon glyphicon-ok" href="#" title="view"></a>
-                                    <a data-placement="top" class="btn btn-danger btn-xs glyphicon glyphicon-trash" href="#" title="danger"></a>
-                                    <a data-placement="top" class="btn btn-info btn-xs glyphicon glyphicon-usd" href="#" title="danger"></a>
-                                </div>
-                                <div class="col-md-12">order made on: 06/20/2014 by <a href="#">jane doe</a></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="panel-footer">put here some note for example: bootdey si a gallery of free bootstrap snippets bootdeys</div>
+                <div class="panel-footer">
+                    <select class="custom-select" id="Ma_Coupon" onchange="ChangeMoney_Coupon(this)">
+                        <option selected>Coupon</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                    <button class="btn btn-success">Thanh Toán</button>
+                    <div class="text-lg-right" style="display:inline-block;float:right"><h3><strong id="sum-hoadon">Tổng: &nbsp;</strong></h3></div>
+                </div>
             </div>
         </div>
                 <!-- Table-DonHang -->
@@ -293,6 +253,7 @@
     //});
                 //Button
                 //Button
+    var taikhoan = ''; var gia = 0;
     $(document).ready(function () {
         $("input[type='radio']").click(function () {
             var radioValue = $("input[name='gioitinh']:checked").val();
@@ -325,6 +286,7 @@
             readURL(this);
         });
     });
+    
     function TaiKhoan_KhachHang() {
         $.ajax({
             url: "GetInfor",
@@ -337,7 +299,8 @@
                     $("#diachi").val(item.diachi);
                     $("#dienthoai").val(item.sdt);
                     $("#gioitinh").val(item.gioitinh);
-                    //$("#email").val(item.email);
+
+                    taikhoan = $("#hoten").val(item.hoten);
 
                 });
                 $('#TaiKhoan_content').show({ direction: "left" }, 1500);
@@ -347,19 +310,152 @@
             }
         });
     }
+
+    function SetTaiKhoan() {
+       // objectHoaDon = JSON.stringify({ 'data': value_cart });
+        $.ajax({
+            url: "SetTaiKhoan",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            data: {
+                hoten: $('#hoten').val(),
+                //sdt: $('#dienthoai').val(),
+                diachi: $('#diachi').val(),
+                email: $('#email').val(),
+                matkhau: $('#matkhau').val()
+            },
+            success: function (result) {
+                setTimeout(() => {
+                    alert("Succees");
+                }, 1100);
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+    }
+
     function TaiKhoan() {
         $.ajax({
             url: "GetInfor_TaiKhoan",
             type: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json",
-            success: function (data) {
-                $("#taikhoan").val(data.taikhoan1);
-                $("#matkhau").val(data.matkhau);
+            success: function (result) {
+                $.each(result, function (key, item) {
+                    $("#taikhoan").val(item.Taikhoan);
+                    $("#matkhau").val(item.matkhau);
+                });
+                
             },
             error: function (errormessage) {
                 alert(errormessage.responseText);
             }
         });
+    }
+
+    var khachhang = []; var num = 0;
+    function HoaDon() {
+        $.ajax({
+            url: "../Home/GetHoaDons",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                $.each(result, function (key, item) {
+                    khachhang.push({
+                        id_hoadon: item.id_hoadon, tenkhachhang: item.tenkhachhang, trangthai: item.trangthai, thoigian: item.thoigian
+                    });
+                    num = num + 1;
+                });
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+    }
+
+    function HoaDonCT() {
+        HoaDon();
+        $.ajax({
+            url: "../Home/GetHoaDonCTs",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                var html = ''; var sum = 0;
+                $.each(result, function (key, item) {
+                    html += '<div class="panel-body ' + item.id_hoadonct + '">';
+                    html += '<div class="row">';
+                    html += '<div class="col-md-1"><img src="../Areas/Admin/assets/img/avt-nam.jpg" class="media-object img-thumbnail" /></div>';
+                    html += '<div class="col-md-11">';
+                    html += '<div class="row">';
+                    html += '<div class="col-md-12">';
+                    html += '<div class="pull-right"><label class="label label-warning">Chưa Thanh Toán</label></div>';
+                   // html += '<div class="pull-right"><label class="label label-warning"> </label></div>';
+                    html += '<span><strong>order '+ item.id_hoadonct+ '</strong></span> <span class="label label-info">group name</span><br />';
+                    html += 'quantity : ' + item.soluong + ',  cost: ' + item.dongia + ' VNĐ <br />';
+                    html += '<a data-placement="top" class="btn btn-success btn-xs glyphicon glyphicon-ok" href="../Home/Deleted/' + item.id_hoadonct + '" title="view"></a>&nbsp;';
+                    html += '<a data-placement="top" class="btn btn-danger btn-xs glyphicon glyphicon-trash" onclick="delete_hoadon(' + item.id_hoadonct + ')" title="danger"></a>';
+                    html += '</div>';
+                    html += '<div class="col-md-12">order made on:' + khachhang[0].thoigian + ' by <a href="#">' + khachhang[0].tenkhachhang + '</a></div>';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '</div>';
+                    sum += item.dongia * item.soluong;
+                });
+                $('#load-hoadon').html(html);
+                $('#sum-hoadon').html('Tổng: &nbsp;' + sum.toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+                MaCoupon();
+                gia = sum;
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+    }
+
+    function MaCoupon() {
+        $.ajax({
+            url: "../Home/GetCoupon_KH",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                var html = '<option selected>--coupon--</option>';
+                $.each(result, function (key, item) {
+                    html += '<option value="' + item.discount + '" name="' + item.id_coupon +'" >'+ item.tencoupon +'</option>';
+                });
+
+                $('#Ma_Coupon').html(html);
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+    }
+
+    function ChangeMoney_Coupon(val) {
+        $('#sum-hoadon').html((gia * val.value / 100).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+    }
+    function delete_hoadon(id_hoadonct) {
+        //data = JSON.stringify({ 'data': value_cart });
+        $.ajax({
+            url: "../Home/Delete_HoaDonCT/?id=" + id_hoadonct,
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                $('.' + id_hoadon).remove();
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+
+        //update gia
+        HoaDonCT();
     }
 </script>

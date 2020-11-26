@@ -149,6 +149,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Models\Coupon_Model.cs" />
     <Compile Include="Common\AccLogin.cs" />
     <Compile Include="Common\CommonStants.cs" />
     <Compile Include="Common\Encryptor.cs" />
@@ -402,7 +403,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

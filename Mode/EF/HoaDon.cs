@@ -1,4 +1,4 @@
-namespace Mode
+namespace Mode.EF
 {
     using System;
     using System.Collections.Generic;
@@ -20,11 +20,8 @@ namespace Mode
 
         public int? id_khachhang { get; set; }
 
-        public int? id_sanpham { get; set; }
-
-        public int? id_loai { get; set; }
-
-        public DateTime? thoigian { get; set; }
+        [StringLength(50)]
+        public string thoigian { get; set; }
 
         public double? tonggia { get; set; }
 
@@ -37,11 +34,9 @@ namespace Mode
         [StringLength(50)]
         public string trangthai { get; set; }
 
+        public string tenkhachhang { get; set; }
+
         public virtual KhachHang KhachHang { get; set; }
-
-        public virtual LoaiSanPham LoaiSanPham { get; set; }
-
-        public virtual SanPham SanPham { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HoaDonCT> HoaDonCTs { get; set; }
