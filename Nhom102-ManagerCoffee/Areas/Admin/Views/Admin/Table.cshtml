@@ -22,7 +22,7 @@
                     <a href="#deleteEmployeeModal" class="btn btn-danger btn-sm" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Xóa</span></a>
                     <a href="#link" class="btn btn-info btn-sm" data-toggle="#"> <span>Xuất Data</span></a>
                     <a href="#Table-LichSu" onclick="LichSu_GetAll()" class="btn btn-info btn-sm" data-toggle="#"> <span>Lịch Sử</span></a>
-                    <a href="#Table-Chart" class="btn btn-info btn-sm" data-toggle="#"> <span>Thống Kê</span></a>
+                    <a href="#Table-Chart" onclick="CreateThongKe()" class="btn btn-info btn-sm" data-toggle="#"> <span>Thống Kê</span></a>
                     <!--Dropdown button-NhanSu-->
                     <div class="dropdown">
                         <button class="btn btn-info dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
@@ -211,7 +211,7 @@
                     <tr>
                         <td>
                             <span class="custom-checkbox">
-                                <input type="checkbox" id="checkbox2" name="options[]" value="1" >
+                                <input type="checkbox" id="checkbox2" name="options[]" value="1">
                                 <label for="checkbox2"></label>
                             </span>
                         </td>
@@ -407,30 +407,39 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
-        
 
-        
-        
-        
+
+        </div>
+
         <!--Table Data-->
 
         <br /><hr /><br />
         <!--Chart-Statistic-->
+
         <table class="table table-striped table-hover" id="Table-Chart">
             <div style="width:800px;" id="Table-title">Thống Kê</div>
 
+            <div>
+                <label>Trong Ngày</label>
+                <input id="Counttrong-ngay" class="btn btn-success" style="margin-left:85px" /><br />
+                <label>Trong Tháng</label>
+                <input id="Counttrong-thang" class="btn btn-primary" style="margin-left:78px" /><br />
+                <label>Doanh Thu Ngày</label>
+                <input id="doanhthu-ngay" class="btn btn-success" style="margin-left:56px" /><br />
+                <label>Doanh Thu Tháng</label>
+                <input id="doanhthu-thang" class="btn btn-primary" style="margin-left:50px" />
+            </div>
             <div class="container-chart">
                 <h2>Biểu Đồ</h2>
-                <canvas id="myChart"></canvas>
+                <div class="row">
+                    <canvas id="chart-hoadon" width="324" height="100"></canvas>
+                </div>
             </div>
 
-            <button id="chart-button">Add</button>
-
-            <body>
-                <script src="~/Areas/Admin/assets/js/js/ChartAdmin.js"></script>
-            </body>
+            <button id="chart-button1">Add</button>
+            <button id="chart-button2" hidden>Add</button>
         </table>
+        <script src="~/Areas/Admin/assets/js/js/ChartAdmin.js"></script>
         <!---->
     </div>
 </div>

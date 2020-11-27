@@ -22,6 +22,20 @@ namespace Mode.DAO
 
             return db.HoaDons.ToList();
         }
+        
+        public double GetHoaDon_TongGia_TrangThaiChua()
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+
+            var list = db.HoaDons.Where(x=>x.trangthai=="Chưa Thanh Toán");
+
+            double sum = 0;
+            foreach(var item in list)
+            {
+                sum += item.tonggia;
+            }
+            return sum;
+        }
 
         public List<HoaDon> GetHoaDon(int id_khachhang)
         {
@@ -70,6 +84,114 @@ namespace Mode.DAO
 
             if (result != null) return result.id_hoadon;
             return -1;
+        }
+
+        #region ThongKe
+        public int CountHoaDon_Ngay()
+        {
+            DateTime now = DateTime.Now;
+            db.Configuration.ProxyCreationEnabled = false;
+
+            var num = 0;
+            var list = db.HoaDons.Where(x => x.trangthai == "Đã Thanh Toán").ToList();
+
+            foreach(var item in list)
+            {
+                DateTime s = Convert.ToDateTime(item.thoigian);
+                string ss = now.Day.ToString();
+                if ( ss == s.Day.ToString())
+                {
+                    num += 1;
+                }
+            }
+
+            return num;
+        }
+        public int CountHoaDon_Thang()
+        {
+            DateTime now = DateTime.Now;
+            db.Configuration.ProxyCreationEnabled = false;
+
+            var num = 0;
+            var list = db.HoaDons.Where(x => x.trangthai == "Đã Thanh Toán").ToList();
+
+            foreach (var item in list)
+            {
+                DateTime s = Convert.ToDateTime(item.thoigian);
+                string ss = now.Month.ToString();
+                if (ss == s.Month.ToString())
+                {
+                    num += 1;
+                }
+            }
+
+            return num;
+        }
+        public double DoanhThu_Ngay()
+        {
+            DateTime now = DateTime.Now;
+            db.Configuration.ProxyCreationEnabled = false;
+
+            double num = 0;
+            var list = db.HoaDons.Where(x => x.trangthai == "Đã Thanh Toán").ToList();
+
+            foreach (var item in list)
+            {
+                DateTime s = Convert.ToDateTime(item.thoigian);
+                string ss = now.Day.ToString();
+                if (ss == s.Day.ToString())
+                {
+                    num += item.tonggia;
+                }
+            }
+
+            return num;
+        }
+        public double DoanhThu_Thang()
+        {
+            DateTime now = DateTime.Now;
+            db.Configuration.ProxyCreationEnabled = false;
+
+            double num = 0;
+            var list = db.HoaDons.Where(x => x.trangthai == "Đã Thanh Toán").ToList();
+
+            foreach (var item in list)
+            {
+                DateTime s = Convert.ToDateTime(item.thoigian);
+                string ss = now.Month.ToString();
+                if (ss == s.Month.ToString())
+                {
+                    num += item.tonggia;
+                }
+            }
+
+            return num;
+        }
+        #endregion
+
+        public int HoaDonDaBan()
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+
+            var num = 0;
+            var list = db.HoaDons.Where(x => x.trangthai == "Đã Thanh Toán").ToList();
+
+            var dao = new HoaDonCTDAO();
+            foreach (var item in list)
+            {
+                var hdct = db.HoaDonCTs.Where(x => x.id_hoadon == item.id_hoadon).ToList();
+                if (hdct != null) { 
+                    foreach(var item2 in hdct)
+                    {
+                        if (item.id_hoadon == item2.id_hoadon)
+                        {
+                            num += item2.soluong;
+                        }
+                    }
+                }
+            }
+
+            return num;
         }
 
     }

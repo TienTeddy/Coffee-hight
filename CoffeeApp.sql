@@ -203,5 +203,9 @@ begin
 end
 go
 
-select *from dbo.Coupon
+select *from dbo.HoaDon
 select *from dbo.TaiKhoan
+SELECT MONTH(CAST('11/12/2020' AS date)) AS Result;
+
+alter table dbo.ThongKe
+add tenthongke nvarchar(10)

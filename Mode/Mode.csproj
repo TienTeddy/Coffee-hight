@@ -68,6 +68,7 @@
     <Compile Include="DAO\TableCTDAO.cs" />
     <Compile Include="DAO\TableDAO.cs" />
     <Compile Include="DAO\TaiKhoanDAO.cs" />
+    <Compile Include="DAO\ThongKeDAO.cs" />
     <Compile Include="EF\CaLamViec.cs" />
     <Compile Include="EF\Context_.cs" />
     <Compile Include="EF\Coupon.cs" />

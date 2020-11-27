@@ -12,7 +12,7 @@ namespace Mode.EF
         [Key]
         public int id_thongke { get; set; }
 
-        public DateTime? thoigian { get; set; }
+        public string thoigian { get; set; }
 
         public int? sltonkho { get; set; }
 
@@ -29,5 +29,7 @@ namespace Mode.EF
         public double? tongthu { get; set; }
 
         public double? doanhthu { get; set; }
+
+        public string tenthongke { get; set; }
     }
 }

@@ -28,6 +28,7 @@ function hide() {
     $("#Table-KhachHang").hide();
     $("#Table-NhanVien").hide();
     $("#Table-LichSu").hide();
+   // $("#Table-Chart").hide();
 }
 //Get SanPham All
 function SanPham_GetAll() {
@@ -476,3 +477,4 @@ function AddCoupon() {
         }
     });
 }
+

@@ -20,7 +20,7 @@ namespace Mode.EF
 
         public int? id_loai { get; set; }
 
-        public int? soluong { get; set; }
+        public int soluong { get; set; }
 
         public int? discount { get; set; }
 

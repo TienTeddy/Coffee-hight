@@ -30,7 +30,7 @@ namespace Mode.EF
 
         public string mota { get; set; }
 
-        public int? soluong { get; set; }
+        public int soluong { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HoaDonCT> HoaDonCTs { get; set; }

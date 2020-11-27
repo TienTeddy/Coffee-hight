@@ -18,7 +18,7 @@ namespace Mode.Models
 
         public double? giasp { get; set; }
 
-        public int? soluong { get; set; }
+        public int soluong { get; set; }
 
     }
 }

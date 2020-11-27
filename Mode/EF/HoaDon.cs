@@ -23,13 +23,13 @@ namespace Mode.EF
         [StringLength(50)]
         public string thoigian { get; set; }
 
-        public double? tonggia { get; set; }
+        public double tonggia { get; set; }
 
         public int? discount { get; set; }
 
         public double? diemcong { get; set; }
 
-        public int? soluong { get; set; }
+        public int soluong { get; set; }
 
         [StringLength(50)]
         public string trangthai { get; set; }

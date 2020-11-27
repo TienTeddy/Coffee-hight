@@ -26,5 +26,26 @@ namespace Mode.DAO
             db.Configuration.ProxyCreationEnabled = false;
             return db.SanPhams.Where(x=>x.id_loai==id).ToList();
         }
+        
+        public int CountSanPham()
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            int sl = 0;
+            var list = db.SanPhams.ToList();
+            foreach(var item in list)
+            {
+                sl += item.soluong;
+            }
+            return sl;
+        }
+
+        public int CountSanPhamDaBan()
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+
+            var dao = new HoaDonDAO();
+            var hoadon = dao.HoaDonDaBan();
+            return hoadon;
+        }
     }
 }
